@@ -7,6 +7,6 @@
 <title>MI primer Aplicación</title>
 </head>
 <body>
-<p>Hola Mundo</p>
+<p>Hola Mundo :D</p>
 </body>
 </html>
