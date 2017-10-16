@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -6,9 +8,6 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
 		
 		<!-- Font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -28,10 +27,7 @@
 		
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-		
+       
 		<!-- Header Start -->
 		<header id="home">
 			
@@ -56,7 +52,7 @@
 									<li><a href="index.html">Principal</a></li>
 									<li><a href="about.html">Nosotros</a></li>
 									<li><a href="service.html">Nuestros Servicios</a></li>
-									<li><a href="reservation.html">Reserva de horas</a></li>
+									<li><a href="busqueda.jsp">Reserva de horas</a></li>
 
 								</ul>
 							</div>
@@ -74,53 +70,52 @@
 		<section id="contact-us">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-12">
-						<div class="title">
-							<h3>Reservas <span>Horas</span></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-			<div class="contact">
-				<div class="container">
-					<div class="row">
 						<div class="col-sm-12">
-							<h4>Please Contact With Us For Any Kind Of Information</h4>
-							<form id="contactform" action="" method="post" class="validateform" name="send-contact">
-								<div class="row">
-									<div class="col-lg-4 field">
-										<input type="text" name="name" placeholder="* Your Name" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-										<div class="validation">
+							<div class="title">
+								<h3>Reservas <span>Horas Médicas</span></h3><br/>
+							</div>
+						</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="panel panel-primary">
+							<div class="panel-heading"><strong>Hora reservada con:</strong></div>
+							<div class="panel-body">
+								<div class="col-sm-8">
+									<input type="hidden" name="rutMedico" value="11111111">
+									<div class="media">
+										<div class="col-sm-3">
+										<img src="img/img_avatar1.png" class="media-object img-circle"/>
 										</div>
-									</div>
-									<div class="col-lg-4 field">
-										<input type="text" name="email" placeholder="* Your Email" data-rule="email" data-msg="Please enter a valid email" />
-										<div class="validation">
+										<div class="col-sm-9">
+											<h4 class="media-heading">Dr. Enrique Salas Avendaño</h4>
+			        						<p>Área Médica: <strong>Medicina General Adulto</strong></p>
+											<p>Ubicación: <strong>Temuco</strong></p>
 										</div>
-									</div>
-									<div class="col-lg-4 field">
-										<input type="text" name="subject" placeholder="Subject" data-rule="maxlen:4" data-msg="Please enter at least 4 chars" />
-										<div class="validation">
-										</div>
-									</div>
-									<div class="col-lg-12 margintop10 field">
-										<textarea rows="12" name="message" class="input-block-level" placeholder="* Your message here..." data-rule="required" data-msg="Please write something"></textarea>
-										<div class="validation">
-										</div>
-										<p>
-											<button class="btn btn-theme margintop10 pull-left" type="submit">Submit message</button>
-											
-										</p>
 									</div>
 								</div>
-							</form>
+								<div class="col-sm-4">
+									<p>El día <strong>27-10-2017</strong></p>
+									<p>A las <strong>09:00 hrs</strong></p>
+									<p>Número de reserva: </p>
+									<h4><span class="label label-warning">4525854</span></h4>
+								</div>							
+							</div>
 						</div>
 					</div>
+					<div class="col-sm-12 col-sm-offset-3">
+						<div class="col-sm-3">
+							<input type="button" value="Anular Hora" class="btn btn-danger btn-block">
+						</div>
+						<div class="col-sm-3">
+							<input type="button" value="Reservar con otro medico" class="btn btn-secondary btn-block">
+						</div>
+					</div>					
 				</div>
-			</div>
-		</section>		
-		<!-- Contact -->
+			</div>		
+		</section>
+		
 		
 		<!-- Copyright -->
 		<div class="copyright">
@@ -128,7 +123,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 Â© <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
+								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
 							</div>
 						</div>
 						<div class="col-sm-5">
@@ -155,11 +150,8 @@
 				</div>
 			</div>
 		
+		
 		<!-- footer -->
-		
-		
-		
-
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
@@ -170,32 +162,7 @@
         <script src="js/jquery.sticky.js"></script>
         <script src="js/wow.min.js"></script>
         <script src="js/main.js"></script>
-        
-		
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('a[href^="#"]').on('click',function (e) {
-					e.preventDefault();
-
-					var target = this.hash;
-					var $target = $(target);
-
-					$('html, body').stop().animate({
-						 'scrollTop': $target.offset().top
-					}, 900, 'swing');
-					});
-			});
-		</script>
-		
 		<script src="js/custom.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
+        
     </body>
 </html>

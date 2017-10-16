@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -20,12 +22,12 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 		
 		
     </head>
     <body>
-        		
 		<!-- Header Start -->
 		<header id="home">
 			
@@ -61,38 +63,91 @@
 			</div>
 			<!-- Main Menu End -->
 			
-			<!-- Sider Start -->
-			<div class="slider">
-				<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators indicatior2">
-						<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
-						<li data-target="#fawesome-carousel" data-slide-to="1"></li>
-					</ol>
-				 
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="img/slider1.jpg" alt="Sider Big Image">							
+		</header>
+		<!-- Header End -->			
+		
+		<!-- Contact -->
+		<section id="contact-us">
+			<div class="container">
+				<div class="row">
+						<div class="col-sm-12">
+							<div class="title">
+								<h3>Reservas <span>Horas Médicas</span></h3><br/>
+							</div>
 						</div>
-						<div class="item">
-							<img src="img/slider2.jpg" alt="Sider Big Image">							
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Selección por Profesional</div>
+							<div class="panel-body">
+								<div class="col-sm-8">
+									<input type="hidden" name="rutMedico" value="11111111">
+									<div class="media">
+										<div class="col-sm-3">
+										<img src="img/img_avatar1.png" class="media-object img-circle"/>
+										</div>
+										<div class="col-sm-9">
+											<h4 class="media-heading">Dr. Enrique Salas Avendaño</h4>
+			        						<p>Medicina General Adulto</p>
+			        						<p>Temuco</p>
+										</div>										
+									</div>									
+									<form method="POST" action="" >
+										<table class="table">
+										    <thead>
+										      	<tr>
+											      	<th class="hidden"></th>
+											        <th class="col-sm-4">Hora</th>
+											        <th class="col-sm-5">Estado</th>
+											        <th class="col-sm-3"></th>
+										      	</tr>
+										    </thead>
+										    <tbody>									    
+										      	<tr>
+											      	<th class="hidden"></th>								      
+											        <td class="success">09:00</td>
+											        <td class="success">Disponible</td>
+											        <td class="success"><button type="button" class="btn btn-primary btn-xs">Reservar</button></td>
+										      	</tr>
+										      	<tr>
+											      	<th class="hidden"></th>
+											        <td class="danger">09:15</td>
+											        <td class="danger">Reservada</td>
+											        <td class="danger"><button type="button" class="btn btn-primary disabled btn-xs">Reservar</button></td>
+										      	</tr>
+										      	<tr>
+											      	<th class="hidden"></th>								      
+											        <td class="success">09:30</td>
+											        <td class="success">Disponible</td>
+											        <td class="success"><button type="button" class="btn btn-primary btn-xs">Reservar</button></td>
+										      	</tr>							      
+										    </tbody>
+										</table>
+									</form>
+								</div>
+								<div class="col-sm-4">
+									<div class="datePicker"></div>
+					        	</div>
+							
+							</div>
+						
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- Sider End -->
-			
-		</header>
-		<!-- Header End -->
+					
+			</div>		
+		</section>
 		
 		
-
 		<!-- Copyright -->
 		<div class="copyright">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 Â© <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
+								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
 							</div>
 						</div>
 						<div class="col-sm-5">
@@ -119,15 +174,13 @@
 				</div>
 			</div>
 		
+		
 		<!-- footer -->
-		
-		
-		
-
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
         <script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
         <script src="js/paralax.js"></script>
         <script src="js/jquery.smooth-scroll.js"></script>
@@ -138,28 +191,12 @@
 		
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('a[href^="#"]').on('click',function (e) {
-					e.preventDefault();
-
-					var target = this.hash;
-					var $target = $(target);
-
-					$('html, body').stop().animate({
-						 'scrollTop': $target.offset().top
-					}, 900, 'swing');
-					});
+				
+				$('.datePicker').datepicker({
+					format: "dd/mm/yyyy",
+				    todayHighlight: true,
+				});
 			});
 		</script>
-		
-		<script src="js/custom.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
     </body>
 </html>

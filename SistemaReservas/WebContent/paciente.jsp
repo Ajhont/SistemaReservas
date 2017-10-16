@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -6,7 +8,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+
 		<!-- Font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,600italic,700italic,800,800italic' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -24,8 +26,7 @@
 		
 		
     </head>
-    <body>
-        		
+    <body>       
 		<!-- Header Start -->
 		<header id="home">
 			
@@ -61,38 +62,98 @@
 			</div>
 			<!-- Main Menu End -->
 			
-			<!-- Sider Start -->
-			<div class="slider">
-				<div id="fawesome-carousel" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators indicatior2">
-						<li data-target="#fawesome-carousel" data-slide-to="0" class="active"></li>
-						<li data-target="#fawesome-carousel" data-slide-to="1"></li>
-					</ol>
-				 
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="img/slider1.jpg" alt="Sider Big Image">							
+		</header>
+		<!-- Header End -->			
+		
+		<!-- Contact -->
+		<section id="contact-us">
+			<div class="container">
+				<div class="row">
+						<div class="col-sm-12">
+							<div class="title">
+								<h3>Reservas <span>Horas Médicas</span></h3><br/>
+							</div>
 						</div>
-						<div class="item">
-							<img src="img/slider2.jpg" alt="Sider Big Image">							
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="panel panel-primary">
+							<div class="panel-heading"><strong>Estas reservando con:</strong></div>
+							<div class="panel-body">
+								<div class="col-sm-8">
+									<input type="hidden" name="rutMedico" value="11111111">
+									<div class="media">
+										<div class="col-sm-3">
+										<img src="img/img_avatar1.png" class="media-object img-circle"/>
+										</div>
+										<div class="col-sm-9">
+											<h4 class="media-heading">Dr. Enrique Salas Avendaño</h4>
+			        						<p>Área Médica: <strong>Medicina General Adulto</strong></p>
+											<p>Ubicación: <strong>Temuco</strong></p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<p>El día <strong>27-10-2017</strong></p>
+									<p>A las <strong>09:00 hrs</strong></p>
+								</div>							
+							</div>
 						</div>
+						<div class="panel panel-primary">
+							<div class="panel-heading"><strong>Información del paciente:</strong></div>
+							<div class="panel-body">
+								<form>
+									<div class="col-sm-4 ">
+										<div class="form-group">
+										  <label for="rut">Rut:</label>
+										  <input type="text" class="form-control" id="rut" value="11.152.158-5">
+										</div>
+										<div class="form-group">
+										  <label for="nombre">Nombre:</label>
+										  <input type="text" class="form-control" id="nombre" value="Jonathan Alfonso">
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label for="apat">Apellido Paterno:</label>
+											<input type="text" class="form-control" id="apat" value="Toledo">
+										</div>
+										<div class="form-group">
+											<label for="amat">Apellido Materno:</label>
+											<input type="text" class="form-control" id="amat" value="Cea">
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label for="phone">Telefono:</label>
+											<input type="text" class="form-control" id="phone" value="954521578">
+										</div>
+										<div class="form-group">
+											<label for="email">Emaill:</label>
+											<input type="text" class="form-control" id="emaill" value="jhon@jhon.cl">
+										</div>
+									</div>
+									<div class="col-sm-4 col-sm-offset-4">
+										<input type="submit" value="Reservar" class="btn btn-primary btn-block">
+									</div>
+								</form>
+							</div>
 					</div>
 				</div>
+					
+			</div>		
 			</div>
-			<!-- Sider End -->
-			
-		</header>
-		<!-- Header End -->
+		</section>
 		
 		
-
 		<!-- Copyright -->
 		<div class="copyright">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 Â© <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
+								<p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong></p>
 							</div>
 						</div>
 						<div class="col-sm-5">
@@ -119,11 +180,8 @@
 				</div>
 			</div>
 		
+		
 		<!-- footer -->
-		
-		
-		
-
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
@@ -135,31 +193,5 @@
         <script src="js/wow.min.js"></script>
         <script src="js/main.js"></script>
         
-		
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('a[href^="#"]').on('click',function (e) {
-					e.preventDefault();
-
-					var target = this.hash;
-					var $target = $(target);
-
-					$('html, body').stop().animate({
-						 'scrollTop': $target.offset().top
-					}, 900, 'swing');
-					});
-			});
-		</script>
-		
-		<script src="js/custom.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
     </body>
 </html>
