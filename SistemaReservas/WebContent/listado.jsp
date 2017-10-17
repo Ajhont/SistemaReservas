@@ -74,7 +74,7 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
-
+<form method="get" action="./listadoController">
         <div class="panel panel-primary">
             <div class="panel-heading">Busqueda General</div>
             <div class="panel-body">
@@ -143,6 +143,7 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>
 <!-- End Content -->

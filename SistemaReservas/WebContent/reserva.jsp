@@ -74,6 +74,7 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
+    <form method="get" action="./reservaController">
         <div class="panel panel-primary">
             <div class="panel-heading"><b>Estas reservando con:</b></div>
             <div class="panel-body">
@@ -142,6 +143,7 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>
 <!-- End Content -->

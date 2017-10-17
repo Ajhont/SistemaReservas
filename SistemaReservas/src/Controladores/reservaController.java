@@ -19,7 +19,7 @@ public class reservaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.procesarPeticion(request, response);
 	}
 
 	/**
@@ -29,5 +29,15 @@ public class reservaController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	@SuppressWarnings("unused")
+	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+					
+			request.getRequestDispatcher("confirmacion.jsp").forward(request, response);
+			
+		}catch (Exception ex) {
+			
+		}
+	}
 }

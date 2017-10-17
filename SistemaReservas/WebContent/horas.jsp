@@ -76,6 +76,7 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
+    <form method="get" action="./horasController">
         <div class="panel panel-primary">
             <div class="panel-heading">Selección por Profesional</div>
             <div class="panel-body">
@@ -112,7 +113,7 @@
                                         <td>09:15</td>
                                         <td>Reservada</td>
                                         <td>
-                                            <button class="btn btn-primary" disabled="true">Reservar</button>
+                                            <button type="button" class="btn btn-primary disable" >Reservar</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -136,6 +137,7 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>
 <!-- End Content -->
