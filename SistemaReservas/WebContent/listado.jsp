@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Consulta horas por profesional</title>
+    <title>Resultado por especialidad</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -56,6 +58,7 @@
                             <li><a href="about.html">Nosotros</a></li>
                             <li><a href="service.html">Nuestros Servicios</a></li>
                             <li><a href="reservation.html">Reserva de horas</a></li>
+
                         </ul>
                     </div>
 
@@ -67,54 +70,83 @@
 
 </header>
 <!-- Header End -->
+
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
+
         <div class="panel panel-primary">
-            <div class="panel-heading"><b>Hora Reservada con:</b></div>
+            <div class="panel-heading">Busqueda General</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                    <div class="col-sm-4">
+                        <p><b>Área Médica:</b> Medicina General Adulto</p>
+                        <p><b>Ubicación:</b> Temuco</p>
+                        <p><b>Rut Paciente:</b> 11.153.153-8</p>
                     </div>
-                    <div class="col-md-6 ti" style="margin-top: 2%">
-                        <p><b>Dr.Juan Esteban Riquelme</b></p>
-                        <p>Medicina General Adulto</p>
-                        <p>Temuco</p>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-lg btn-info ">
+                            <span class="glyphicon glyphicon-backward"></span> Volver a buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    </div>
-                    <div class="col-md-3">
-                        <div class="title">
-                            <p>
-                                El dÃ­a <b>27-10-2017</b>
-                            </p>
-                            <p>
-                                A las <b>09:00 hrs</b>
-                            </p>
-                            <p>
-                                NÃºmero de Reserva
-                            </p>
-                            <p>
-                                <button class="btn btn-warning">4525854</button>
-                            </p>
+        <div class="panel">
+            <div class="media">
+                <div class="media-object">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                            </div>
+                            <div class="col-sm-7 ti" style="margin-top: 2%">
+                                <p><b>Dr.Juan Esteban Riquelme</b></p>
+                                <p>Medicina General Adulto</p>
+                                <p>Temuco</p>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
+                                    Seleccionar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-6" align="right">
-                    <button type="button" class="btn btn-danger btn-lg">Anular Hora</button>
-                </div>
-                <div class="col col-lg-6">
-                    <button type="button" class="btn btn-secondary btn-lg">Reservar con otro mÃ©dico</button>
+        <div class="panel">
+            <div class="media">
+                <div class="media-object">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                            </div>
+                            <div class="col-sm-7 ti" style="margin-top: 2%">
+                                <p><b>Dr.Enrique Salas Avendaño</b></p>
+                                <p>Medicina General Adulto</p>
+                                <p>Temuco</p>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
+                                    Seleccionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- End Content -->
+
 <!-- footer -->
 <!-- Copyright -->
 <div class="copyright">
@@ -122,10 +154,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2017 Â© <strong>Fernando Riffo</strong>
-                        template by <strong><a href="http://www.pfind.com/goodies/">pFind's
-                            Goodies</a></strong>
-                    </p>
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                        Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
+                        Goodies</a></strong></p>
                 </div>
             </div>
             <div class="col-sm-5">

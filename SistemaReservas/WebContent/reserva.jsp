@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 <head>
@@ -72,71 +74,70 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
-
         <div class="panel panel-primary">
-            <div class="panel-heading">Busqueda General</div>
+            <div class="panel-heading"><b>Estas reservando con:</b></div>
             <div class="panel-body">
                 <div class="row">
+                    <div class="col-sm-3">
+                        <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                    </div>
+                    <div class="col-sm-6 ti" style="margin-top: 2%">
+                        <p><b>Dr.Juan Esteban Riquelme</b></p>
+                        <p>Medicina General Adulto</p>
+                        <p>Temuco</p>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="title">
+                            <p>
+                                El dÌa <b>27-10-2017</b>
+                            </p>
+                            <p>
+                                A las <b>09:00 hrs</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><b>InformaciÛn del paciente</b></div>
+            <div class="panel-body">
+                <div class="form-group row">
                     <div class="col-sm-4">
-                        <p><b>√Årea M√©dica:</b> Medicina General Adulto</p>
-                        <p><b>Ubicaci√≥n:</b> Temuco</p>
-                        <p><b>Rut Paciente:</b> 11.153.153-8</p>
+                        <p><b>Rut:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Apellido Paterno:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Telefono:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <p><b>Nombre:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Apellido Materno:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Email:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-lg btn-info ">
-                            <span class="glyphicon glyphicon-backward"></span> Volver a buscar
+                    <div class="col-lg-offset-5">
+                        <button type="submit" class="btn btn-primary ">
+                            Reservar
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="media">
-                <div class="media-object">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
-                            </div>
-                            <div class="col-sm-7 ti" style="margin-top: 2%">
-                                <p><b>Dr.Juan Esteban Riquelme</b></p>
-                                <p>Medicina General Adulto</p>
-                                <p>Temuco</p>
-
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="media">
-                <div class="media-object">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
-                            </div>
-                            <div class="col-sm-7 ti" style="margin-top: 2%">
-                                <p><b>Dr.Enrique Salas Avenda√±o</b></p>
-                                <p>Medicina General Adulto</p>
-                                <p>Temuco</p>
-
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -152,7 +153,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 ¬© <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
                         Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                         Goodies</a></strong></p>
                 </div>

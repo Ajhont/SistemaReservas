@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Resultado por especialidad</title>
+    <title>Consulta horas por profesional</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +27,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.standalone.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.standalone.min.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 
@@ -56,7 +62,6 @@
                             <li><a href="about.html">Nosotros</a></li>
                             <li><a href="service.html">Nuestros Servicios</a></li>
                             <li><a href="reservation.html">Reserva de horas</a></li>
-
                         </ul>
                     </div>
 
@@ -68,74 +73,65 @@
 
 </header>
 <!-- Header End -->
-
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading"><b>Estas reservando con:</b></div>
+            <div class="panel-heading">Selección por Profesional</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
-                    </div>
-                    <div class="col-sm-6 ti" style="margin-top: 2%">
-                        <p><b>Dr.Juan Esteban Riquelme</b></p>
-                        <p>Medicina General Adulto</p>
-                        <p>Temuco</p>
-
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="title">
-                            <p>
-                                El dÃ­a <b>27-10-2017</b>
-                            </p>
-                            <p>
-                                A las <b>09:00 hrs</b>
-                            </p>
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                            </div>
+                            <div class="col-sm-8" style="margin-top: 2%">
+                                <p><b>Dr.Enrique Salas Avendaño</b></p>
+                                <p>Medicina General Adulto</p>
+                                <p>Temuco</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>09:00</td>
+                                        <td>Disponible</td>
+                                        <td>
+                                            <button class="btn btn-primary">Reservar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:15</td>
+                                        <td>Reservada</td>
+                                        <td>
+                                            <button class="btn btn-primary" disabled="true">Reservar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:30</td>
+                                        <td>Disponible</td>
+                                        <td>
+                                            <button class="btn btn-primary">Reservar</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading"><b>InformaciÃ³n del paciente</b></div>
-            <div class="panel-body">
-                <div class="form-group row">
                     <div class="col-sm-4">
-                        <p><b>Rut:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Apellido Paterno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Telefono:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-4">
-                        <p><b>Nombre:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Apellido Materno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Email:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-offset-5">
-                        <button type="submit" class="btn btn-primary ">
-                            Reservar
-                        </button>
+                        <div class="container">
+                            <div id="datepicker" data-date="12/03/2012"></div>
+                            <input type="hidden" id="my_hidden_input">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,7 +139,6 @@
     </div>
 </section>
 <!-- End Content -->
-
 <!-- footer -->
 <!-- Copyright -->
 <div class="copyright">
@@ -151,9 +146,10 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 Â© <strong><a href="http://www.pfind.com/goodies/bizium/">The
-                        Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
-                        Goodies</a></strong></p>
+                    <p>All Rights Reserved | Copyright 2017 © <strong>Fernando Riffo</strong>
+                        template by <strong><a href="http://www.pfind.com/goodies/">pFind's
+                            Goodies</a></strong>
+                    </p>
                 </div>
             </div>
             <div class="col-sm-5">
@@ -194,6 +190,8 @@
 <script src="js/jquery.sticky.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
 
 
 <script type="text/javascript">
@@ -227,6 +225,15 @@
     }(window, document, 'script', 'ga'));
     ga('create', 'UA-XXXXX-X', 'auto');
     ga('send', 'pageview');
+</script>
+
+<script type="text/javascript">
+    $('#datepicker').datepicker();
+    $('#datepicker').on('changeDate', function () {
+        $('#my_hidden_input').val(
+            $('#datepicker').datepicker('getFormattedDate')
+        );
+    });
 </script>
 </body>
 </html>
