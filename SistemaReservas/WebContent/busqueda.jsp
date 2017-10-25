@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!doctype html>
@@ -103,16 +104,30 @@
 							<div class="panel-heading">Selecciona Área Médica</div>
 							<div class="panel-body">
 								<div class="form-group">
-									<select class="form-control">
-										<option>Medicina General</option>
-										<option>Obtetricia</option>
+									<select name="especialidad" class="form-control" id="sel1"
+										style="width: 70%">
+										<%
+											ResultSet listaEsp = (ResultSet)request.getAttribute("lEsp");
+											while (listaEsp.next()) {
+										%>
+										<option><%=listaEsp.getString("nombreEspecialidad")%></option>
+										<%
+											}
+										%>
 									</select>
 								</div>
 
 								<div class="form-group">
-									<select class="form-control">
-										<option>Adulto</option>
-										<option>Niño</option>
+									<select name="area" class="form-control" id="sel1"
+										style="width: 70%">
+										<%
+											ResultSet listaArea = (ResultSet)request.getAttribute("lAreas");
+											while (listaEsp.next()) {
+										%>
+										<option><%=listaEsp.getString("nombreArea")%></option>
+										<%
+											}
+										%>
 									</select>
 								</div>
 
@@ -150,8 +165,8 @@
 							<div class="panel-body">
 								<div class="form-group">
 									<div class="form-group">
-										<label for="rutPaciente">RUT del paciente</label> 
-										<input type="email" class="form-control" id="rutPanciente"
+										<label for="rutPaciente">RUT del paciente</label> <input
+											type="email" class="form-control" id="rutPanciente"
 											placeholder="Ej: 12345678-5">
 									</div>
 								</div>
