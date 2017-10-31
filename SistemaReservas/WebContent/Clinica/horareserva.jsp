@@ -144,7 +144,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2017 © <strong>Fernando Riffo</strong>
+                    <p>All Rights Reserved | Copyright 2017 © <strong></strong>
                         template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                             Goodies</a></strong>
                     </p>
