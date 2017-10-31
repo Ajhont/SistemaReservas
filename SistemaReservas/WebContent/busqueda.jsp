@@ -122,9 +122,9 @@
 										style="width: 70%">
 										<%
 											ResultSet listaArea = (ResultSet)request.getAttribute("lAreas");
-											while (listaEsp.next()) {
+											while (listaArea.next()) {
 										%>
-										<option><%=listaEsp.getString("nombreArea")%></option>
+										<option><%=listaArea.getString("nombreArea")%></option>
 										<%
 											}
 										%>
@@ -144,15 +144,10 @@
 								<div class="form-group">
 
 									<div class="radio">
-										<label class="radio"> <input type="radio"
-											name="ubicacion" id="temuco" value="option1"> Temuco
-										</label>
+										<label class="radio"> <input type="radio" name="optradio" value="Temuco"> Temuco</label>
 									</div>
 									<div class="radio">
-										<label class="radio"> <input type="radio"
-											name="ubicacion" id="plc" value="option2"> Padre las
-											casas
-										</label>
+										<label class="radio"> <input type="radio"name="ubicacion" value="Padre las casas"> Padre las casas</label>
 									</div>
 								</div>
 							</div>
@@ -165,9 +160,8 @@
 							<div class="panel-body">
 								<div class="form-group">
 									<div class="form-group">
-										<label for="rutPaciente">RUT del paciente</label> <input
-											type="email" class="form-control" id="rutPanciente"
-											placeholder="Ej: 12345678-5">
+										<label for="rutPaciente">RUT del paciente</label> 
+										<input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5">
 									</div>
 								</div>
 							</div>

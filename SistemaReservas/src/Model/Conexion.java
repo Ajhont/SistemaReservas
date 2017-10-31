@@ -12,7 +12,7 @@ public class Conexion {
 	
 	public Conexion() throws Exception{
 		Class.forName("com.mysql.jdbc.Driver");
-		conexion =
+		conexion = 
 				(Connection)DriverManager.getConnection(servidor,usuario,contrasenia);
 	}
  
