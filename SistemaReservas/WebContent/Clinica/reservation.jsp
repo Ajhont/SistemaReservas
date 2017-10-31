@@ -1,3 +1,6 @@
+<%@page import="java.sql.ResultSet"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -58,7 +61,7 @@
                 <li><a href="index.html">Principal</a></li>
                 <li><a href="about.html">Nosotros</a></li>
                 <li><a href="service.html">Nuestros Servicios</a></li>
-                <li><a href="reservation.html">Reserva de horas</a></li>
+                <li><a href="reservation.hml">Reserva de horas</a></li>
 
               </ul>
             </div>
@@ -96,23 +99,30 @@
                   <div class="panel-heading">selecciona area medica</div>
                   <div class="panel-body">
                     <div class="form-group">
-                      <select class="form-control">
-
-										<option>medicina general</option>
-										<option>dentista</option>
-										<option>kinesiologo</option>
-										<option>psiquiatra</option>
+                      <select name="especialidad" class="form-control" id="sel1"
+										style="width: 70%">
+										<%
+											ResultSet listaEsp = (ResultSet)request.getAttribute("lEsp");
+											while (listaEsp.next()) {
+										%>
+										<option><%=listaEsp.getString("nombreEspecialidad")%></option>
+										<%
+											}
+										%>
 									</select>
                     </div>
                     <div class="form-group">
-                      <select class="form-control">
-
-										<option>medicina general</option>
-										<option>dentista</option>
-										<option>kinesiologo</option>
-										<option>psiquiatra</option>
+                      <select name="area" class="form-control" id="sel1"
+										style="width: 70%">
+										<%
+											ResultSet listaArea = (ResultSet)request.getAttribute("lAreas");
+											while (listaEsp.next()) {
+										%>
+										<option><%=listaEsp.getString("nombreArea")%></option>
+										<%
+											}
+										%>
 									</select>
-                    </div>
 
                     <p>
                       <a href="">buscar por nombre y apellido</a>
