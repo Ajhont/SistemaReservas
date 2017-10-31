@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.ResultSet" %>
 <!doctype html>
 <html class="no-js" lang="es">
 <head>
@@ -80,7 +83,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="title">
-                    <h3>Reservas <span>Horas M√©dicas</span></h3>
+                    <h3>Reservas <span>Horas MÈdicas</span></h3>
                 </div>
             </div>
         </div>
@@ -91,18 +94,37 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-danger">
-                        <div class="panel-heading">Selecciona √Årea M√©dica</div>
+                        <div class="panel-heading">Selecciona ¡rea MÈdica</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option>Medicina General</option>
-                                    <option>Neurolog√≠a</option>
+                                <select name="especialidad" class="form-control">
+                                    <%
+                                    ResultSet lEspecialidades = (ResultSet)request.getAttribute("lEsp");
+                                    
+                                    while(lEspecialidades.next()){
+                                    %>
+                                    <option><%= lEspecialidades.getString("nombreEspecialidad") %></option>
+                                    
+                                    
+                                    <%
+                                    }
+                                    %>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option>Adulto</option>
-                                    <option>Ni√±o</option>
+                                <select name="area" class="form-control">
+                                   <%
+                                    ResultSet lAreas = (ResultSet)request.getAttribute("lArea");
+                                    
+                                    while(lAreas.next()){
+                                    %>
+                                    <option><%= lAreas.getString("nombreArea") %></option>
+                                    
+                                    
+                                    <%
+                                    }
+                                    %>
+                                
                                 </select>
                             </div>
                             <a href="#">Buscar por Nombre o Apellido</a>
@@ -111,7 +133,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="panel panel-danger">
-                        <div class="panel-heading"> Selecciona Ubicaci√≥n</div>
+                        <div class="panel-heading"> Selecciona UbicaciÛn</div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="radio">
@@ -123,7 +145,7 @@
                                 <div class="radio">
                                     <label class="radio">
                                         <input type="radio" name="ubicacion" id="plc" value="option2">
-                                        Victoria
+                                        Padre las Casas
                                     </label>
                                 </div>
                             </div>
@@ -187,7 +209,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 ¬© <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
                         Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                         Goodies</a></strong></p>
                 </div>
@@ -231,37 +253,5 @@
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
-
-            var target = this.hash;
-            var $target = $(target);
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing');
-        });
-    });
-</script>
-
-<script src="js/custom.js"></script>
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    (function (b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] = function () {
-            (b[l].q = b[l].q || []).push(arguments)
-        });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = 'https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-</script>
 </body>
 </html>
