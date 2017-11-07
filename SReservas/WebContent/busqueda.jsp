@@ -164,7 +164,7 @@
 											<td>
 												<div class="form-group">
 												    <label style="font-weight: normal">Rut del paciente:</label>
-												    <input type="text" class="form-control" placeholder="Ej: 12345678-5">
+												    <input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5">
 												  </div>
 											</td>
 											
