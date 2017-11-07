@@ -99,8 +99,7 @@
                   <div class="panel-heading">selecciona area medica</div>
                   <div class="panel-body">
                     <div class="form-group">
-                      <select name="especialidad" class="form-control" id="sel1"
-										style="width: 70%">
+                      <select name="especialidad" class="form-control" id="sel1"style="width: 70%">
 										<%
 											ResultSet listaEsp = (ResultSet)request.getAttribute("lEsp");
 											while (listaEsp.next()) {
