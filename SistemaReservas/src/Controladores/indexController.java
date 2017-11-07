@@ -33,7 +33,7 @@ public class indexController extends HttpServlet {
 			request.getRequestDispatcher("/reservation.jsp").forward(request, response);
 			
 		} catch (Exception e) {
-			request.setAttribute("error", "no funca");
+			request.setAttribute("error", "Error al intentar acceder a los da");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}

@@ -34,7 +34,7 @@ public class busquedaController extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 					
-			request.getRequestDispatcher("listado.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			
 		}catch (Exception ex) {
 			
