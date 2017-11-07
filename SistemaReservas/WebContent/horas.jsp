@@ -130,7 +130,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="container">
-                            <div id="datepicker" data-date="12/03/2012"></div>
+                            <div id="datepicker" data-date="01/01/2017"></div>
                             <input type="hidden" id="my_hidden_input">
                         </div>
                     </div>

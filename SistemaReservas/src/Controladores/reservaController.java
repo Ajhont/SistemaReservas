@@ -29,7 +29,6 @@ public class reservaController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	@SuppressWarnings("unused")
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
