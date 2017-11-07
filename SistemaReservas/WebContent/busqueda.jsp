@@ -101,7 +101,7 @@
                                     <%
                                     ResultSet lEspecialidades = (ResultSet)request.getAttribute("lEsp");
                                     
-                                    while(lEspecialidades.next()){
+                                    while (lEspecialidades.next()){
                                     %>
                                     <option><%= lEspecialidades.getString("nombreEspecialidad") %></option>
                                     
@@ -138,13 +138,13 @@
                             <div class="form-group">
                                 <div class="radio">
                                     <label class="radio">
-                                        <input type="radio" name="ubicacion" id="temuco" value="option1">
+                                        <input type="radio" name="optradio" id="temuco" value="option1">
                                         Temuco
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label class="radio">
-                                        <input type="radio" name="ubicacion" id="plc" value="option2">
+                                        <input type="radio" name="optradio" id="plc" value="option2">
                                         Padre las Casas
                                     </label>
                                 </div>
@@ -160,7 +160,8 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">RUT del paciente</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    
+                                    <input type="text" name="rutP" class="form-control" id="exampleInputEmail1"
                                            placeholder="Ej: 12345678-5">
                                 </div>
                                 <div class="form-group">

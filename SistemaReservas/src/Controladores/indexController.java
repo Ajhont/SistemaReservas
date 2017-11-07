@@ -1,6 +1,7 @@
 package Controladores;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,5 @@ public class indexController extends HttpServlet {
 			request.setAttribute("error", "Error al intentar acceder a los datos");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
-		
 	}
 }
