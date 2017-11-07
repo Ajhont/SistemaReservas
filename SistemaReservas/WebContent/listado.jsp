@@ -114,12 +114,17 @@
 					listaMedicos.beforeFirst();
 					while (listaMedicos.next()) {
 			%>
-			<form method="POST" action="">
+			<form method="POST" action="listadoController">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="panel">
 							<div class="panel-body">
-								<input type="hidden" name="rutMedico" value="11111111">
+								<input type="hidden" name="rutMedico"
+									value="<%=listaMedicos.getString("rutMedico")%>">
+									<input type= "hidden" name="especialidad" value="<%= request.getAttribute("especialidad")%>">
+									<input type= "hidden" name="area" value="<%= request.getAttribute("area")%>">
+									<input type= "hidden" name="ciudad" value="<%= request.getAttribute("ciudad")%>">
+									<input type= "hidden" name="rutPaciente" value="<%= request.getAttribute("rutPaciente")%>">
 								<div class="media">
 									<div class="col-sm-2">
 										<img class="media-object img-circle" src="img/silueta.jpg">

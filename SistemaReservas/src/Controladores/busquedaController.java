@@ -29,6 +29,13 @@ public class busquedaController extends HttpServlet {
 		this.buscarEspecialistas(request, response);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		this.buscarEspecialistas(request, response);
+	}
+
 	public void buscarEspecialistas(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {

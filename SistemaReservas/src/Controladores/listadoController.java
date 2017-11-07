@@ -32,7 +32,7 @@ public class listadoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		this.procesarPeticion(request, response);
 	}
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -52,6 +52,7 @@ public class listadoController extends HttpServlet {
 			
 			ResultSet horas = Reservar.obtencioHoras(rutMedico, fechaActual);
 			ResultSet medico = Reservar.detallesMedico(rutMedico);
+			
 			request.setAttribute("listaHoras", horas);
 			request.setAttribute("detalleMedico", medico);
 			request.setAttribute("fechaActual", fechaActual);
