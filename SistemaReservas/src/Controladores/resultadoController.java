@@ -43,7 +43,7 @@ public class resultadoController extends HttpServlet {
 			String mes = Integer.toString(calendario.get(Calendar.MONTH) + 1);
 			String anio = Integer.toString(calendario.get(Calendar.YEAR));
 
-			String fechaActual = 2017 + "-" + 11 + "-" + 07;
+			String fechaActual = anio + "-" + mes + "-" + dia;
 			String rutMedico = request.getParameter("rutMedico");
 			String especialidad = request.getParameter("especialidad");
 			String area = request.getParameter("area");
