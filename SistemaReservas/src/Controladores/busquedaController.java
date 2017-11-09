@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.ResultSet;
+
+import Model.Reservar;
 
 
 /**
@@ -15,29 +18,44 @@ import javax.servlet.http.HttpServletResponse;
 public class busquedaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+	
+	
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		this.procesarPeticion(request, response);
+		// TODO Auto-generated method stub
+		this.buscarEspecialistas(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		this.buscarEspecialistas(request, response);
 	}
-	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
+
+	public void buscarEspecialistas(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-					
-			request.getRequestDispatcher("").forward(request, response);
+			String especialidad = request.getParameter("especialidad");
+			String area = request.getParameter("area");
+			String ciudad = request.getParameter("optradio");
+			String rutPaciente = request.getParameter("rutP");
 			
-		}catch (Exception ex) {
+			ResultSet listado = Reservar.solicitudEspecialistas(especialidad, area, ciudad);
+			request.setAttribute("listaMedicos", listado);
+			request.setAttribute("rutPaciente", rutPaciente);
+			request.setAttribute("especialidad", especialidad);
+			request.setAttribute("area", area);
+			request.setAttribute("ciudad", ciudad);
 			
+			request.getRequestDispatcher("/listado.jsp").forward(request, response);
+			
+		} catch (Exception e) {
+			request.setAttribute("error", "Error al intentar cargar los datos");
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 }

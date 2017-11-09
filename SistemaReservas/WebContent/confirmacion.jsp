@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>horas disponible</title>
+    <title>Consulta horas por profesional</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,10 +27,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.standalone.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.standalone.min.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 
@@ -75,62 +73,44 @@
 <section id="contact-us">
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">Selección por Profesional</div>
+            <div class="panel-heading"><b>Hora Reservada con:</b></div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-8">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <img class="img-circle" src="img/perfil-doctor.jpg" alt="Sider Big Image">
-                            </div>
-                            <div class="col-sm-8" style="margin-top: 2%">
-                                <p><b>Dr.Enrique Salas Avendaño</b></p>
-                                <p>Medicina General Adulto</p>
-                                <p>Temuco</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Hora</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>09:00</td>
-                                        <td>Disponible</td>
-                                        <td>
-                                            <button class="btn btn-primary">Reservar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:15</td>
-                                        <td>Reservada</td>
-                                        <td>
-                                            <button class="btn btn-primary" disabled="true">Reservar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:30</td>
-                                        <td>Disponible</td>
-                                        <td>
-                                            <button class="btn btn-primary"href="horareservada.html">Reservar</button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="col-sm-3">
+                        <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
+                    </div>
+                    <div class="col-md-6 ti" style="margin-top: 2%">
+                        <p><b>Dr.Juan Esteban Riquelme</b></p>
+                        <p>Medicina General Adulto</p>
+                        <p>Temuco</p>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="title">
+                            <p>
+                                El día <b>27-10-2017</b>
+                            </p>
+                            <p>
+                                A las <b>09:00 hrs</b>
+                            </p>
+                            <p>
+                                Número de Reserva
+                            </p>
+                            <p>
+                                <button class="btn btn-warning">4525854</button>
+                            </p>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="container">
-                            <div id="datepicker" data-date="12/03/2012"></div>
-                            <input type="hidden" id="my_hidden_input">
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-6" align="right">
+                    <button type="button" class="btn btn-danger btn-lg">Anular Hora</button>
+                </div>
+                <div class="col col-lg-6">
+                    <button type="button" class="btn btn-secondary btn-lg">Reservar con otro médico</button>
                 </div>
             </div>
         </div>
@@ -144,7 +124,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2017 © <strong></strong>
+                    <p>All Rights Reserved | Copyright 2017 © <strong>Fernando Riffo</strong>
                         template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                             Goodies</a></strong>
                     </p>
@@ -188,8 +168,6 @@
 <script src="js/jquery.sticky.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/bootstrap-datepicker.min.js"></script>
 
 
 <script type="text/javascript">
@@ -223,15 +201,6 @@
     }(window, document, 'script', 'ga'));
     ga('create', 'UA-XXXXX-X', 'auto');
     ga('send', 'pageview');
-</script>
-
-<script type="text/javascript">
-    $('#datepicker').datepicker();
-    $('#datepicker').on('changeDate', function () {
-        $('#my_hidden_input').val(
-            $('#datepicker').datepicker('getFormattedDate')
-        );
-    });
 </script>
 </body>
 </html>

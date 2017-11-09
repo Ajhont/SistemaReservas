@@ -77,29 +77,32 @@
 
   <!-- Contact -->
   <section id="contact-us">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title">
-            <h3>Reservas <span>Horas</span></h3>
-          </div>
-        </div>
-      </div>
-    </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="title">
+						<h3>
+							Reservas <span>Horas Médicas</span>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <div class="contact">
-      <div class="container">
-        <div class="row">
-          <form>
-            <h1>Seleccione Area Medica</h1><br>
-            <div class="row">
 
-              <div class="col-sm-4">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">selecciona area medica</div>
-                  <div class="panel-body">
-                    <div class="form-group">
-                      <select name="especialidad" class="form-control" id="sel1"style="width: 70%">
+		<div class="container">
+
+			<form method="get" action="./busquedaController">
+				<div class="row">
+
+					<div class="col-lg-4">
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">Selecciona Área Médica</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<select name="especialidad" class="form-control" id="sel1"
+										style="width: 70%">
 										<%
 											ResultSet listaEsp = (ResultSet)request.getAttribute("lEsp");
 											while (listaEsp.next()) {
@@ -109,77 +112,79 @@
 											}
 										%>
 									</select>
-                    </div>
-                    <div class="form-group">
-                      <select name="area" class="form-control" id="sel1"
+								</div>
+
+								<div class="form-group">
+									<select name="area" class="form-control" id="sel1"
 										style="width: 70%">
 										<%
 											ResultSet listaArea = (ResultSet)request.getAttribute("lAreas");
-											while (listaEsp.next()) {
+											while (listaArea.next()) {
 										%>
-										<option><%=listaEsp.getString("nombreArea")%></option>
+										<option><%=listaArea.getString("nombreArea")%></option>
 										<%
 											}
 										%>
 									</select>
+								</div>
 
-                    <p>
-                      <a href="">buscar por nombre y apellido</a>
-                    </p>
+								<a href="#">Buscar por nombre de especialista</a>
+							</div>
+						</div>
 
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">selecciona Ciudad</div>
-                  <div class="panel-body">
-                    <div class="form-group">
+					</div>
+
+					<div class="col-lg-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Selecciona Ubicación</div>
+							<div class="panel-body">
+								<div class="form-group">
+
+									<div class="radio">
+										<label class="radio"> <input type="radio" name="optradio" value="Temuco"> Temuco</label>
+									</div>
+									<div class="radio">
+										<label class="radio"> <input type="radio"name="optradio" value="Padre las casas"> Padre las casas</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Ingresa datos del paciente</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<div class="form-group">
+										<label for="rutPaciente">RUT del paciente</label> 
+										<input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<button type="submit" class="btn btn-lg btn-info btn-block">
+							Buscar</button>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<button type="submit" class="btn btn-lg btn-primary btn-block">
+							Modificar o anular reserva de hora</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
 
 
-
-                      <input type="radio" name="ciudad" value="temuco" checked> Temuco
-                      <br> <input type="radio" name="ciudad" value="pdlascasas"> padre las casas<br> <input type="radio" name="ciudad" value="freire"> freire
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">ingrese datos del paciente</div>
-                  <div class="panel-body">
-                    <div class="form-group">
-
-                      <label for="rutpaciente">Rut del paciente</label>
-                      <input type="email" class="form-control" id="rutpaciente" placeholder="12345678-5">
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col-xs-4 col-xs-offset-4">
-                <button href="busqueda.html" class="btn btn-lg btn-info btn-block">BUSCAR</button>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4 col-xs-offset-4">
-                <button type="button" class="btn btn-lg btn-block">modificar o anular reserva de hora</button>
-
-              </div>
-            </div>
-          </form>
-
-        </div>
-      </div>
-    </div>
-  </section>
+	</section>
   <!-- Contact -->
 
   <!-- Copyright -->
@@ -188,7 +193,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="copy-text">
-            <p>All Rights Reserved | Copyright 2016 © </p>
+            <p>All Rights Reserved | Copyright 2016 ï¿½ </p>
           </div>
         </div>
 
