@@ -20,24 +20,29 @@ public class resultadoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		this.procesarPeticion(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		this.procesarPeticion(request, response);
 	}
+
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-					
+
 			Calendar calendario = Calendar.getInstance();
 			String dia = Integer.toString(calendario.get(Calendar.DATE));
 			String mes = Integer.toString(calendario.get(Calendar.MONTH) + 1);
@@ -49,10 +54,10 @@ public class resultadoController extends HttpServlet {
 			String area = request.getParameter("area");
 			String ciudad = request.getParameter("ciudad");
 			String rutPaciente = request.getParameter("rutPaciente");
-			
+
 			ResultSet horas = Reservar.obtencioHoras(rutMedico, fechaActual);
 			ResultSet medico = Reservar.detallesMedico(rutMedico);
-			
+
 			request.setAttribute("listaHoras", horas);
 			request.setAttribute("detalleMedico", medico);
 			request.setAttribute("fechaActual", fechaActual);
@@ -61,8 +66,8 @@ public class resultadoController extends HttpServlet {
 			request.setAttribute("ciudad", ciudad);
 			request.setAttribute("rutPaciente", rutPaciente);
 			request.getRequestDispatcher("horas.jsp").forward(request, response);
-			
-		}catch (Exception ex) {
+
+		} catch (Exception ex) {
 			request.setAttribute("error", "Error al intentar cargar los datos");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
