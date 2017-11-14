@@ -1,5 +1,7 @@
+<%@page import="java.security.cert.PKIXRevocationChecker.Option"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.sql.ResultSet" %>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -88,9 +90,16 @@
 										<tr>															
 											<td>
 												<div class="form-group">																	  
-												  <select class="form-control" id="sel1" style="width: 70%">
-												    <option>Medicina General</option>
-												    <option>Odontología</option>							    
+												  <select name="especilidad" class="form-control" id="sel1" style="width: 70%">
+												   <% 
+												   ResultSet listaEsp = (ResultSet)request.getAttribute("IEsp");
+												   
+												   while(listaEsp.next()){
+												   %>
+												   <option><%= listaEsp.getString("nombreEspecialidad") %></option>
+												   <%
+												   }
+												   %>												   					    
 												  </select>
 												</div>
 											</td>											
@@ -99,8 +108,15 @@
 											<td>
 												<div class="form-group">							  
 												  <select class="form-control " id="sel1" style="width: 70%">
-												    <option>Adulto</option>
-												    <option>Niños</option>							    
+												    <% 
+												   ResultSet listaArea = (ResultSet)request.getAttribute("IAreas");
+												   
+												   while(listaArea.next()){
+												   %>
+												   <option><%= listaArea.getString("nombreArea") %></option>
+												   <%
+												   }
+												   %>	
 												  </select>
 												</div>
 											</td>
@@ -180,7 +196,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="copy-text">
-								<p>All Rights Reserved | Copyright 2016 ©</p>
+								<p>All Rights Reserved | Copyright 2017 ©</p>
 							</div>
 						</div>
 					</div>

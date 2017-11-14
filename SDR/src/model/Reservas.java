@@ -1,7 +1,8 @@
 package model;
 
-import java.sql.*;;
-
+import java.sql.ResultSet;
+import java.sql.Statement;
+import com.mysql.jdbc.Connection;
 
 public class Reservas {
 
