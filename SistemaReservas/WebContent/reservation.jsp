@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="title">
-                    <h3>Reservas <span>Horas M√©dicas</span></h3>
+                    <h3>Reservas <span>Horas MÈdicas</span></h3>
                 </div>
             </div>
         </div>
@@ -91,18 +91,18 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-danger">
-                        <div class="panel-heading">Selecciona √Årea M√©dica</div>
+                        <div class="panel-heading">Selecciona ¡rea MÈdica</div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <select class="form-control">
                                     <option>Medicina General</option>
-                                    <option>Neurolog√≠a</option>
+                                    <option>NeurologÌa</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <select class="form-control">
                                     <option>Adulto</option>
-                                    <option>Ni√±o</option>
+                                    <option>NiÒo</option>
                                 </select>
                             </div>
                             <a href="#">Buscar por Nombre o Apellido</a>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="panel panel-danger">
-                        <div class="panel-heading"> Selecciona Ubicaci√≥n</div>
+                        <div class="panel-heading"> Selecciona UbicaciÛn</div>
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="radio">
@@ -187,7 +187,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 ¬© <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
                         Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                         Goodies</a></strong></p>
                 </div>

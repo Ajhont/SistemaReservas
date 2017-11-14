@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es">
+<%@ page import="java.sql.ResultSet" %>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -59,7 +60,6 @@
                             <li><a href="reservation.html">Reserva de horas</a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -71,52 +71,84 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
+    <div class="row">
+				<div class="col-sm-12">
+					<div class="title">
+						<h3>
+							Reservas <span>Horas Médicas</span>
+						</h3>
+						<br/>
+					</div>
+				</div>
+			</div>
         <div class="panel panel-primary">
-            <div class="panel-heading">SelecciÃ³n por Profesional</div>
+            <div class="panel-heading">Selección por Profesional</div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-8">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <img class="img-circle" src="https://thumbs.dreamstime.com/b/el-doctor-mantiene-la-taza-c%C3%ADrculo-35807758.jpg" alt="Dr. Enrique Salas">
-                            </div>
-                            <div class="col-sm-8" style="margin-top: 2%">
-                                <p><b>Dr.Enrique Salas AvendaÃ±o</b></p>
-                                <p><Strong>Medicina General Adulto</p></Strong>
-                                <p><Strong>Temuco</p></Strong>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
+                    	<%
+							ResultSet detalleMedico = (ResultSet) request.getAttribute("detalleMedico");
+							detalleMedico.next();
+						%>
+						<input type="hidden" name="rutMedico" value="<%=detalleMedico.getString("rutMedico")%>">
+							<div class="media">
+								<div class="col-sm-3">
+									<img class="img-circle" src="https://thumbs.dreamstime.com/b/el-doctor-mantiene-la-taza-c%C3%ADrculo-35807758.jpg" alt="Dr. Enrique Salas">
+								</div>
+								<div class="col-sm-7">
+									<h4 class="media-heading">Dr.<%=detalleMedico.getString("nombreMedico")%></h4>
+									<p><%=request.getAttribute("especialidad")%> / 
+									<%=request.getAttribute("area")%></p>
+									<p><%=request.getAttribute("ciudad")%></p>
+									<p></p>
+								</div>
+							</div>
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Hora</th>
-                                        <th>Estado</th>
+                                        <th class="hidden"></th>
+										<th class="col-sm-4">Hora</th>
+										<th class="col-sm-5">Estado</th>
+										<th class="col-sm-3"><%=request.getAttribute("fechaActual")%></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>09:00</td>
-                                        <td>Disponible</td>
-                                        <td>
-                                            <button class="btn btn-primary">Reservar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:15</td>
-                                        <td>Reservada</td>
-                                        <td>
-                                            <button class="btn btn-primary" disabled="true">Reservar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:30</td>
-                                        <td>Disponible</td>
-                                        <td>
-                                            <button class="btn btn-primary">Reservar</button>
-                                        </td>
-                                    </tr>
+                                    <%
+										ResultSet listaHoras = (ResultSet) request.getAttribute("listaHoras");
+										if (listaHoras.next()) {
+											listaHoras.beforeFirst();
+											while (listaHoras.next()) {
+												if (listaHoras.getBoolean("estadoHoras")) {
+									%>
+									<tr>
+										<th class="hidden"><%=listaHoras.getString("idHoras")%></th>
+										<th class="success"><%=listaHoras.getString("horaHoras")%></th>
+										<th class="success">Disponible</th>
+										<th class="success"><button type="button"
+												class="btn btn-primary btn-xs">Reservar</button></th>
+									</tr>
+									<%
+										} else {
+									%>
+									<tr>
+										<th class="hidden"><%=listaHoras.getString("idHoras")%></th>
+										<th class="danger"><%=listaHoras.getString("horaHoras")%></th>
+										<th class="danger">No Disponible</th>
+										<th class="danger"><button type="button" disabled
+												class="btn btn-primary btn-xs">Reservar</button></th>
+									</tr>
+									<%
+										}
+											}
+										} else {
+									%>
+									<tr>
+										<td class="danger" colspan="4">No existen Horas para la
+											fecha Seleccionada</td>
+									</tr>
+									<%
+										}
+									%>
                                     </tbody>
                                 </table>
                             </div>
@@ -141,7 +173,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2017 Â© <strong>VÃ­ctor Huircaleo</strong>
+                    <p>All Rights Reserved | Copyright 2017 © <strong>Víctor Huircaleo</strong>
                         template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                             Goodies</a></strong>
                     </p>

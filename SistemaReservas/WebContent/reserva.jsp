@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
+
 </head>
 <body>
 <!-- Header Start -->
@@ -68,69 +69,67 @@
 <section id="contact-us">
     <div class="container">
         <div class="panel panel-primary">
-            <div class="panel-heading">Busqueda General</div>
+            <div class="panel-heading"><b>Estas reservando con:</b></div>
             <div class="panel-body">
                 <div class="row">
+                    <div class="col-sm-3">
+                        <img class="img-circle" src="http://1.bp.blogspot.com/-hefBHcDHL38/UrAqPy61XWI/AAAAAAAAFSo/h3xu6BjMKiM/s1600/calavera_by_deiby_ybied-d4zdmee.gif" alt="Dr. Juan Riquelme">
+                    </div>
+                    <div class="col-sm-6 ti" style="margin-top: 2%">
+                        <p><b>Dr.Juan Esteban Riquelme</b></p>
+                        <p><Strong>Medicina General Adulto</p></Strong>
+                        <p><Strong>Temuco</p></Strong>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="title">
+                            <p>
+                                El dÌa <b>27-10-2017</b>
+                            </p>
+                            <p>
+                                A las <b>09:00 hrs</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><b>InformaciÛn del paciente</b></div>
+            <div class="panel-body">
+                <div class="form-group row">
                     <div class="col-sm-4">
-                        <p><b>√Årea M√©dica:</b> Medicina General Adulto</p>
-                        <p><b>Ubicaci√≥n:</b> Temuco</p>
-                        <p><b>Rut Paciente:</b> 11.152.158-5</p>
+                        <p><b>Rut:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Apellido Paterno:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Telefono:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <p><b>Nombre:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Apellido Materno:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Email:</b></p>
+                        <input class="form-control" type="date" value="2011-08-19">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-lg btn-info ">
-                            <span class="glyphicon glyphicon-backward"></span> Volver a buscar
+                    <div class="col-lg-offset-5">
+                        <button type="submit" class="btn btn-primary ">
+                            Reservar
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="media">
-                <div class="media-object">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <img class="img-circle" src="http://1.bp.blogspot.com/-hefBHcDHL38/UrAqPy61XWI/AAAAAAAAFSo/h3xu6BjMKiM/s1600/calavera_by_deiby_ybied-d4zdmee.gif" alt="Sider Big Image">
-                            </div>
-                            <div class="col-sm-7 ti" style="margin-top: 2%">
-                                <p><b>Dr.Juan Esteban Riquelme</b></p>
-                                <p>Medicina General Adulto</p>
-                                <p>Temuco</p>
-
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="media">
-                <div class="media-object">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <img class="img-circle" src="https://thumbs.dreamstime.com/b/el-doctor-mantiene-la-taza-c%C3%ADrculo-35807758.jpg" alt="Sider Big Image">
-                            </div>
-                            <div class="col-sm-7 ti" style="margin-top: 2%">
-                                <p><b>Dr.Enrique Salas Avenda√±o</b></p>
-                                <p>Medicina General Adulto</p>
-                                <p>Temuco</p>
-
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 10%">
-                                    Seleccionar
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -146,7 +145,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 ¬© <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
                         Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                         Goodies</a></strong></p>
                 </div>

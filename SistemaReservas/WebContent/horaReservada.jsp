@@ -85,13 +85,13 @@
                     <div class="col-md-3">
                         <div class="title">
                             <p>
-                                El dÃ­a <b>27-10-2017</b>
+                                El día <b>27-10-2017</b>
                             </p>
                             <p>
                                 A Las <b>09:00 Hrs</b>
                             </p>
                             <p>
-                                NÃºmero de Reserva
+                                Número de Reserva
                             </p>
                             <p>
                                 <button class="btn btn-warning">4525854</button>
@@ -107,7 +107,7 @@
                     <button type="button" class="btn btn-danger btn-lg">Anular Hora</button>
                 </div>
                 <div class="col col-lg-6">
-                    <button type="button" class="btn btn-secondary btn-lg">Reservar con otro mÃ©dico</button>
+                    <button type="button" class="btn btn-secondary btn-lg">Reservar con otro médico</button>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2017 Â© <strong>VÃ­ctor Huircaleo</strong>
+                    <p>All Rights Reserved | Copyright 2017 © <strong>Víctor Huircaleo</strong>
                         template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                             Goodies</a></strong>
                     </p>

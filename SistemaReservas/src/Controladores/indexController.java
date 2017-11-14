@@ -13,7 +13,6 @@ import Model.Reserva;
 @WebServlet("/indexController")
 public class indexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		procesarPeticion(request, response);

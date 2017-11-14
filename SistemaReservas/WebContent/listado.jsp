@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es">
+<%@ page import="java.sql.ResultSet" %>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,7 +27,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
 
 </head>
 <body>
@@ -68,73 +68,91 @@
 <!-- Content -->
 <section id="contact-us">
     <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><b>Estas reservando con:</b></div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <img class="img-circle" src="http://1.bp.blogspot.com/-hefBHcDHL38/UrAqPy61XWI/AAAAAAAAFSo/h3xu6BjMKiM/s1600/calavera_by_deiby_ybied-d4zdmee.gif" alt="Dr. Juan Riquelme">
-                    </div>
-                    <div class="col-sm-6 ti" style="margin-top: 2%">
-                        <p><b>Dr.Juan Esteban Riquelme</b></p>
-                        <p><Strong>Medicina General Adulto</p></Strong>
-                        <p><Strong>Temuco</p></Strong>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="title">
-                            <p>
-                                El dÃ­a <b>27-10-2017</b>
-                            </p>
-                            <p>
-                                A las <b>09:00 hrs</b>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-heading"><b>InformaciÃ³n del paciente</b></div>
-            <div class="panel-body">
-                <div class="form-group row">
-                    <div class="col-sm-4">
-                        <p><b>Rut:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Apellido Paterno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Telefono:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-4">
-                        <p><b>Nombre:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Apellido Materno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+    	<div class="row">
+			<div class="col-sm-12">
+				<div class="title">
+					<h3>
+						Reservas <span>Horas Médicas</span>
+					</h3>
+				<br/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+    	     <div class="panel panel-primary"> 
+             	<div class="panel-heading">Busqueda General</div> 
+           		 <div class="panel-body"> 
+                 	<p>
+						<strong>Área Médica: </strong><%=request.getAttribute("especialidad")%>
+								/
+						<%=request.getAttribute("area")%>
+					</p>
+					<p>
+						<strong>Ubicación: </strong><%=request.getAttribute("ciudad")%></p>
+					<p>
+						<strong>Rut Paciente: </strong><%=request.getAttribute("rutPaciente")%></p>
+					<a href="indexController" class="btn btn-info btn-sm"> <span
+							class="glyphicon glyphicon-backward"></span> Volver a buscar
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>	
+			<%
+				ResultSet listaMedicos = (ResultSet) request.getAttribute("listaMedicos");
+				if (listaMedicos.next()) {
+					listaMedicos.beforeFirst();
+					while (listaMedicos.next()) {
+			%>
+			<form method="POST" action="./resultController">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="panel">
+							<div class="panel-body">
+								<input type="hidden" name="rutMedico" value="<%=listaMedicos.getString("rutMedico")%>">
+									<input type= "hidden" name="especialidad" value="<%= request.getAttribute("especialidad")%>">
+									<input type= "hidden" name="area" value="<%= request.getAttribute("area")%>">
+									<input type= "hidden" name="ciudad" value="<%= request.getAttribute("ciudad")%>">
+									<input type= "hidden" name="rutPaciente" value="<%= request.getAttribute("rutPaciente")%>">
+								<div class="media">
+									<div class="col-sm-2">
+										<img class="media-object img-circle" src="img/silueta.jpg">
+									</div>
+									<div class="col-sm-7" style="margin-top: 2%">
+										<h4 class="media-heading">Dr.<%=listaMedicos.getString("nombreMedico")%></h4>
+										<p><%=listaMedicos.getString("nombreEspecialidad")%>-<%=listaMedicos.getString("nombreArea")%></p>
+										<p><%=listaMedicos.getString("nombreCiudad")%></p>
+									</div>
+									<div class="col-sm-3">
+										<input type="submit" value="Seleccionar" class="btn btn-primary btn-block">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<%
+				}
+			%>
+			<%
+				} else {
+			%>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<p class="text-danger">
+							<strong>No existen resultados de la busqueda</strong>
+						</p>
+					</div>
+				</div>
+			</div>
+		<%
+			}
+		%>
+ </div>
 
-                    </div>
-                    <div class="col-sm-4">
-                        <p><b>Email:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-offset-5">
-                        <button type="submit" class="btn btn-primary ">
-                            Reservar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 <!-- End Content -->
 
@@ -145,7 +163,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="copy-text">
-                    <p>All Rights Reserved | Copyright 2016 Â© <strong><a href="http://www.pfind.com/goodies/bizium/">The
+                    <p>All Rights Reserved | Copyright 2016 © <strong><a href="http://www.pfind.com/goodies/bizium/">The
                         Bizium</a></strong> template by <strong><a href="http://www.pfind.com/goodies/">pFind's
                         Goodies</a></strong></p>
                 </div>

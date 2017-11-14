@@ -90,7 +90,7 @@
     </div>
 
     <div class="container">
-        <form>
+        <form method = "POST" action= "./buscoController">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-danger">
@@ -138,13 +138,13 @@
                             <div class="form-group">
                                 <div class="radio">
                                     <label class="radio">
-                                        <input type="radio" name="optradio" id="temuco" value="option1">
+                                        <input type="radio" name="optradio" id="temuco" value="Temuco">
                                         Temuco
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label class="radio">
-                                        <input type="radio" name="optradio" id="plc" value="option2">
+                                        <input type="radio" name="optradio" id="plc" value="Padre las Casas">
                                         Padre las Casas
                                     </label>
                                 </div>
