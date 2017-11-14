@@ -10,7 +10,7 @@ public class main {
 			Conexion con  = new Conexion();
 			
 			if (con!=null) {
-				System.out.println("Soy Gay");
+				System.out.println("funca");
 				
 				
 			}

@@ -102,7 +102,8 @@
 								value="<%=detalleMedico.getString("rutMedico")%>">
 							<div class="media">
 								<div class="col-sm-2">
-									<img class="media-object img-circle" src="img/silueta.jpg">
+									<img class="media-object img-circle"
+										src="img/perfil-doctor.jpg">
 								</div>
 								<div class="col-sm-7">
 									<h4 class="media-heading">
@@ -164,8 +165,8 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="col-sm-4 col-sm-offset">
-							<div id="datepicker"></div>
+						<div class="col-md-2"->
+							<div id="datepicker" data-date="12/08/2017"></div>
 							<input type="hidden" id="my_hidden_input">
 
 						</div>
@@ -222,7 +223,7 @@
 						.write(
 								'<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
 	</script>
-	<script src="js/plugins.js"></script>
+		<script src="js/plugins.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script src="js/paralax.js"></script>
@@ -231,7 +232,21 @@
 	<script src="js/wow.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="js/bootstrap-datepicker.es.min.js"></script>
+		
+		<script type="text/javascript">
+		$('#datepicker').datepicker({
+			language : "es"
+		});
+		$('#datepicker').on(
+				'changeDate',
+				function() {
+					$('#my_hidden_input').val(
+							$('#datepicker').datepicker('getFormattedDate')
+					);
+				});
+	</script>
+	<script src="js/custom.js"></script>
 
 
 	<script src="js/custom.js"></script>
@@ -253,10 +268,7 @@
 		ga('send', 'pageview');
 	</script>
 
-	<script type="text/javascript">
-		$(function() {
-			$("#datepicker").datepicker();
-		});
-	</script>
+
+	
 </body>
 </html>
