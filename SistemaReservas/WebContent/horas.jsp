@@ -100,18 +100,17 @@
 							%>
 							<input type="hidden" name="rutMedico"
 								value="<%=detalleMedico.getString("rutMedico")%>">
+								
+								
+								
 							<div class="media">
 								<div class="col-sm-2">
 									<img class="media-object img-circle"
 										src="img/perfil-doctor.jpg">
 								</div>
 								<div class="col-sm-7">
-									<h4 class="media-heading">
-										Dr.
-										<%=detalleMedico.getString("nombreMedico")%></h4>
-									<p><%=request.getAttribute("especialidad")%>
-										/
-										<%=request.getAttribute("area")%></p>
+									<h4 class="media-heading">Dr.<%=detalleMedico.getString("nombreMedico")%></h4>
+									<p><%=request.getAttribute("especialidad")%>-<%=request.getAttribute("area")%></p>
 									<p><%=request.getAttribute("ciudad")%></p>
 									<p></p>
 								</div>

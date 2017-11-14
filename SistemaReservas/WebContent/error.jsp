@@ -33,11 +33,9 @@
 
 <body>
 <div class="page-404">
-    <p class="text-404">no carga naa.. :P</p>
+    <p class="text-404">no funca</p>
 
-		<p>
-			<a href="index.html">VOLVER</a>
-		</p>
+		
 	</div>
 
 
