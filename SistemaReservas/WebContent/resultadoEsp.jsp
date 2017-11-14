@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -67,105 +68,65 @@
 	<section id="contact-us">
 		<div class="container ">
 		
+		<% ResultSet listaMedicos = (ResultSet)request.getAttribute("listadoMedicos");
+							if(listaMedicos.next()){
+								listaMedicos.beforeFirst();
+								while(listaMedicos.next())
+								{
+		%>
+						<form method="post" action="./resultController">
+							<div class="row">
+								<div class="panel">
+									<div class="panel-body">
+									<input type="hidden" name="rutMedico" value="<%= listaMedicos.getString("rutMedico")%>">
+									<input type="hidden" name="especialidad" value="<%= request.getAttribute("especialidad") %>">
+									<input type="hidden" name="area" value="<%= request.getAttribute("area") %>">
+									<input type="hidden" name="ciudad" value="<%= request.getAttribute("ciudad") %>">
+									<input type="hidden" name="rutPaciente" value="<%= request.getAttribute("rutPaciente")%>"> 
+									
+									<div class="media">
+										<div class="col-sm-2">
+										<img src="https://a1-images.myspacecdn.com/images03/31/e689247f52604611ae2ccd9a1d4fd8a2/600x600.jpg" class="media-object img-circle"/>
+											
+										</div>
+										<div class="col-sm-7">
+											<h4 class="media-heading">Dr. <%= listaMedicos.getString("nombreMedico") %></h4>
+											<p><%= listaMedicos.getString("nombreEspecialidad") %> - <%= listaMedicos.getString("nombreArea") %></p>
+											<p><%= listaMedicos.getString("nombreCiudad") %></p>
+										</div>
+										<div class="col-sm-3">
+										<input type="submit" value="Seleccionar" class="btn btn-primary btn-block">
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<%
+						}
+						%>
+						<%
+						
+							}else{
+						%>
+						<div class="container">
+						<div class="row">
+						<div class="col-md-3 col-ms-offset-4">
+							<p class="text-danger"><strong>NO EXISTEN RESULTADOS DE LA BUSQUEDA U_U</strong></p>
+						</div>
+						</div>
+						</div>
+						<%
+							}
+						%>
 		
-		<table class="table table-bordered">
-		<thead class="thead-inverse"><tr  class="bg-primary"><th>Busqueda General</th></tr></thead>
-		<tbody>
 		
-		
-		<tr><td colspan="2"><strong>Area Medica:</strong></td></tr>
-		<tr><td><strong>Ubicacion:</strong> Temuco</td></tr>
-		<tr><td><strong>Rut Paciente:</strong> 11-153-153-8</td></tr>
-		<tr><td><button type="button" class="btn btn-info">
-		<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Volver a Buscar
-		</button></td></tr>
-		</tbody>
-		
-		</table>
-		
-		
-		<div class="panel panel-default">
-		  <div class="panel-body row">
-		 <div class="col-md-3">
-  		 <img src="https://i.ytimg.com/vi/esOcn5y86mM/hqdefault.jpg" class="img-circle" width="200" height="200">
-			</div>
-			 <div class="col-md-7"><h3>Dr. Goku</h3>
-			 <br/>
-			 <p>Medicina General Adulto</p>
-			 <p>Temuco</p>
-			 </div>
-			 <div class="col-md-2">
-			 <button type="button" class="btn btn-primary" >SELECCIONAR</button>
-			 </div>
-			
-  			</div>
-  		
-		</div>
-		
-		<div class="panel panel-default">
-		  <div class="panel-body row">
-		 <div class="col-md-3">
-  		 <img src="https://vignette.wikia.nocookie.net/dragonball/images/c/cd/0000000dr.gero.jpg/revision/latest/scale-to-width-down/185?cb=20120406213943&path-prefix=es" class="img-circle" width="200" height="200">
-			</div>
-			 <div class="col-md-7"><h3>Dr. Maki Gero</h3>
-			 <br/>
-			 <p>Medicina General Adulto</p>
-			 <p>Temuco</p>
-			 </div>
-			 <div class="col-md-2">
-			 <button type="button" class="btn btn-primary" >SELECCIONAR</button>
-			 </div>
-			
-  			</div>
-  		
-		</div>
 	
-		
-			
 		</div>
 
 		
 	</section>
 	<!-- Contact -->
-
-	<!-- Copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="copy-text">
-						<p>
-							All Rights Reserved | Copyright 2016 © <strong><a
-								href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong>
-							template by <strong><a
-								href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong>
-						</p>
-					</div>
-				</div>
-				<div class="col-sm-5">
-					<div class="footer-menu pull-right">
-						<ul>
-							<li><a href="index.html">Principal</a></li>
-							<li><a href="about.html">Nosotros</a></li>
-							<li><a href="service.html">Servicios</a></li>
-							<li><a href="reservation.html">Reserva de horas</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="social">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- footer -->
 
 

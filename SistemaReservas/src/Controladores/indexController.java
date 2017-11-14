@@ -40,7 +40,7 @@ public class indexController extends HttpServlet {
 		}
 		catch(Exception e) {
 			
-			request.setAttribute("erro", "Error al intentar acceder a los datos");
+			request.setAttribute("error", "Error al intentar acceder a los datos");
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 			
 			

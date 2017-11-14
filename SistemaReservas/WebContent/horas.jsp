@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -65,6 +66,10 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading ">Seleccion por Profesional</div>
 			<div class="panel-body row">
+			<% 
+				ResultSet detalleMedico = (ResultSet)request.getAttribute("detalleMedico");
+				detalleMedico.next();
+			%>
 			 <div class="clearfix visible-xs-block"></div>
 
 				<div class="col-md-3">
@@ -72,7 +77,10 @@
 						class="img-circle" width="200" height="200">
 				</div>
 				<div class="col-md-6">
-					<h3>Dr. Goku</h3>
+					<h3 class="media-heading">Dr. <%= detalleMedico.getString("nombreMedico") %></h3>
+					<p><%= request.getAttribute("especialidad") %>/<%= request.getAttribute("area") %></p>
+					<p><%= request.getAttribute("ciudad") %></p>
+					
 					<br />
 					<p>Medicina General Adulto</p>
 					<p>Temuco</p>
@@ -84,38 +92,59 @@
 					<input type="hidden" id="my_hidden_input">
 
 				</div>
-				<div class="col-md-6">
+				<div >
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Hora</th>
-								<th>Estado</th>
+							<th class ="hidden" ></th>
+								<th class="col-sm-4">Hora</th>
+								<th class="col-sm-5">Estado</th>
+								<th class="col-sm-3"><%=request.getAttribute("fechaActual") %></th>
+								<th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="success">
-								<td>09:00</td>
-								<td>Disponible</td>
-								<td>
+						<% ResultSet listaHoras = (ResultSet)request.getAttribute("listaHoras");
+						if(listaHoras.next()){
+							listaHoras.beforeFirst();
+							while(listaHoras.next()){
+								if(listaHoras.getBoolean("estadoHoras")){
+							
+						
+						
+						%>
+							<tr>
+								<th class="hidden"><%= listaHoras.getString("idHoras") %></th>
+								<td class="success"><%= listaHoras.getString("horaHoras") %></td>
+								<td class="success"> DISPONIBLE </td>
+								<td class="success">
 									<button class="btn btn-primary">Reservar</button>
 								</td>
 							</tr>
-							<tr class="danger">
-								<td>09:15</td>
-								<td>Reservada</td>
-								<td>
-									<button class="btn btn-primary">Reservar</button>
+						<% }else { %>
+							<tr>
+								<th class="hidden"><%= listaHoras.getString("idHoras") %></th>
+								<td class="danger"><%= listaHoras.getString("horaHoras") %></td>
+								<td class="danger"> NO DISPONIBLE  U_U</td>
+								<td class="danger">
+									<button class="btn btn-primary " disabled>Reservar</button>
 								</td>
 							</tr>
-							<tr class="success">
-								<td>09:30</td>
-								<td>Disponible</td>
-								<td>
-									<button class="btn btn-primary">Reservar</button>
-								</td>
+							<%	}
+						}
+						}else{
+							
+							%>
+							<tr>
+								<td class="danger" colspan="4">NO EXISTEN HORA PARA LA FECHA SELECCIONADA >:V </td>
 							</tr>
+							<%} %>
 						</tbody>
 					</table>
+					<div class="col-sm-4">
+					
+						<div class="datePicker"></div>
+					</div>
 				</div>
 
 

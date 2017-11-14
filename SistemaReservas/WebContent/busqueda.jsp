@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@page import="java.sql.ResultSet" %>
+	pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.ResultSet"%>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -97,8 +97,9 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<h4>Please Contact With Us For Any Kind Of Information</h4>
-						<form id="contactform" action="" method="post"
-							class="validateform" name="send-contact">
+
+						<form id="contactform" action="./busquedaController"
+							method="POST" class="validateform" name="send-contact">
 							<div class="row">
 								<div class="col-lg-4 field">
 									<table class="table table-bordered">
@@ -108,36 +109,45 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr >
+											<tr>
 												<td>
 													<div class="form-group">
-														
-														<select name="especialidad" class="form-control" id="idEspecialidad" style="width: 70%">
-														<%
-															ResultSet listaEsp = (ResultSet)request.getAttribute("lEsp");
-															while(listaEsp.next()){
-														%>
-														<option> <%= listaEsp.getString("nombreEspecialidad") %></option>
-														<%} %>
+
+														<select name="especialidad" class="form-control"
+															 style="width: 70%">
+															<%
+																ResultSet listaEsp = (ResultSet) request.getAttribute("lEsp");
+																while (listaEsp.next()) {
+															%>
+															<option> <%=listaEsp.getString("nombreEspecialidad")%></option>
+															<%
+																}
+															%>
 														</select>
-														
-														
+
+
 														<p></p>
 													</div>
-												
+
 													<div class="form-group">
-														<select name="especialidad" class="form-control" id="idEspecialidad" style="width: 70%">
-														<%
-															ResultSet listaArea = (ResultSet)request.getAttribute("lAreas");
-															while(listaArea.next()){
-														%>
-														<option> <%= listaArea.getString("nombreArea") %></option>
-														<%} %>
+														<select name="area" class="form-control" 
+															style="width: 70%">
+															<%
+																ResultSet listaArea = (ResultSet) request.getAttribute("lAreas");
+																while (listaArea.next()) {
+															%>
+															<option> <%=listaArea.getString("nombreArea")%></option>
+															<%
+																}
+															%>
 														</select>
-														
-													
+
+
 														<p></p>
-														<p class="text-center"><A HREF="#" TARGET="_new">Buscar por Nombre o Apellido</A></p>
+														<p class="text-center">
+															<A HREF="#" TARGET="_new">Buscar por Nombre o
+																Apellido</A>
+														</p>
 													</div>
 												</td>
 											</tr>
@@ -157,21 +167,19 @@
 											</tr>
 										</thead>
 										<tbody>
-										<tr>
-										<td>
-											<div class="radio">
-												<label><input type="radio" name="optradio">Villarica</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="optradio">La
-													Dehesa</label>
-											</div>
-											<div class="radio disabled">
-												<label><input type="radio" name="optradio">Vitacura
-													o La Dehesa</label>
-											</div>
-										</td>
-										</tr>
+											<tr>
+												<td>
+													<div class="radio">
+														<label><input type="radio" name="optradio"
+															value="Temuco">Temuco</label>
+													</div>
+													<div class="radio">
+														<label><input type="radio" name="optradio"
+															value="Padre las Casas">Padre las Casas</label>
+													</div>
+
+												</td>
+											</tr>
 										</tbody>
 
 
@@ -188,76 +196,42 @@
 										<tbody>
 											<tr>
 												<td><label>Rut del paciente</label> <input type="text"
-												class="form-control"
-													name="rut" placeholder="RUT sin puntos 12345678-9">
-													<div class="radio">
-														<label><input type="radio" name="dni">Rut</label>
-													</div>
-													<div class="radio disabled">
-														<label><input type="radio" name="dni">Pasaporte</label>
-													</div></td>
+													class="form-control" name="rutP"
+													placeholder="RUT sin puntos 12345678-9">
 											</tr>
 										</tbody>
 									</table>
 
 
 								</div>
-								<div class="col-lg-12 margintop10 field">
-									<div class="col-lg-4"></div>
-									<div class="col-lg-4">
-										<button type="submit" class="btn btn-warning btn-block">Buscar</button>
-
+								<div class="row">
+									<div class="col-xs-4 col-xs-offset-4">
+										<button type="submit" class="btn btn-lg btn-primary btn-block">
+											Buscar</button>
 									</div>
-									<div class="col-lg-4"></div>
-									
 								</div>
-								
+								<br>
+								<div class="row">
+									<div class="col-xs-4 col-xs-offset-4">
+										<button type="submit" class="btn btn-lg btn-danger btn-block">
+											Modificar o Anular la Reserva</button>
+									</div>
+								</div>
+
 							</div>
 						</form>
+
+
+
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 	</section>
 	<!-- Contact -->
 
-	<!-- Copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="copy-text">
-						<p>
-							All Rights Reserved | Copyright 2016 © <strong><a
-								href="http://www.pfind.com/goodies/bizium/">The Bizium</a></strong>
-							template by <strong><a
-								href="http://www.pfind.com/goodies/">pFind's Goodies</a></strong>
-						</p>
-					</div>
-				</div>
-				<div class="col-sm-5">
-					<div class="footer-menu pull-right">
-						<ul>
-							<li><a href="index.html">Principal</a></li>
-							<li><a href="about.html">Nosotros</a></li>
-							<li><a href="service.html">Servicios</a></li>
-							<li><a href="reservation.html">Reserva de horas</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="social">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- footer -->
 
