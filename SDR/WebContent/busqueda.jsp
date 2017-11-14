@@ -107,7 +107,7 @@
 										<tr>
 											<td>
 												<div class="form-group">							  
-												  <select class="form-control " id="sel1" style="width: 70%">
+												  <select name="area" class="form-control " id="sel1" style="width: 70%">
 												    <% 
 												   ResultSet listaArea = (ResultSet)request.getAttribute("IAreas");
 												   
@@ -142,10 +142,10 @@
 										<tr>
 											<td>
 												<div class="radio">
-												  <label><input type="radio" name="optradio">Temuco</label>
+												  <label><input type="radio" name="optradio" value="Temuco">Temuco</label>
 												</div>
 												<div class="radio">
-												  <label><input type="radio" name="optradio">Padre las casas</label>
+												  <label><input type="radio" name="optradio" value="Padre las casas">Padre las casas</label>
 												</div>
 											</td>
 											
@@ -165,7 +165,7 @@
 											<td>
 												<div class="form-group">
 												    <label style="font-weight: normal">Rut del paciente:</label>
-												    <input type="text" class="form-control" placeholder="Ej: 12345678-5">
+												    <input name="rutP" type="text" class="form-control" placeholder="Ej: 12345678-5">
 												  </div>
 											</td>
 											
