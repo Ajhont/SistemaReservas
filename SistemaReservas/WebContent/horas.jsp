@@ -70,6 +70,12 @@
 				ResultSet detalleMedico = (ResultSet)request.getAttribute("detalleMedico");
 				detalleMedico.next();
 			%>
+			<input type="hidden" name="rutMedico" value="<%= detalleMedico.getString("rutMedico") %>">
+			<input type="hidden" name="especialidad" value="<%= request.getAttribute("especialidad") %>">
+			<input type="hidden" name="area" value="<%= request.getAttribute("area")%>">
+			<input type="hidden" name="ciudad" value="<%= request.getAttribute("ciudad")%>">
+			<input type="hidden" name="rutPaciente" value="<%= request.getAttribute("rutPaciente")%>">
+			 
 			 <div class="clearfix visible-xs-block"></div>
 
 				<div class="col-md-3">
@@ -88,7 +94,7 @@
 
 				
 				<div class="col-md-2"->
-					<div id="datepicker" data-date="12/08/2017"></div>
+					<div id="datepicker" data-date=""></div>
 					<input type="hidden" id="my_hidden_input">
 
 				</div>
@@ -99,7 +105,7 @@
 							<th class ="hidden" ></th>
 								<th class="col-sm-4">Hora</th>
 								<th class="col-sm-5">Estado</th>
-								<th class="col-sm-3"><%=request.getAttribute("fechaActual") %></th>
+								<th class="col-sm-3"><%=request.getAttribute("fecha") %></th>
 								<th>
 							</tr>
 						</thead>
@@ -190,18 +196,31 @@
 
 	<script type="text/javascript">
 		$('#datepicker').datepicker({
-			language : "es"
+			
+			format : "dd/mm/yyyy",
+			todayHighlight: true,
+		}). on('changeDate', function(e) {
+			
+			var dia = e.date.getDate();
+			var mes = e.date.getMonth()+1;
+			var anio = e.date.getFullYear();
+			var fecha = anio + "-"+ mes + "-"+ dia;
+			
+			var rutMedico = $("input[name='rutMedico']").val();
+			var especialidad = $("input[name='especialidad']").val();
+			var area = $("input[name='area']").val();
+			var  ciudad = $("input[name='ciudad']").val();
+			var rutPaciente = $("input[name='rutPaciente']").val();
+			
+			location.href="./resultController?fecha="+fecha+"&rutMedico="+rutMedico+
+					"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+
+					"&rutPaciente="+rutPaciente;
+			
+		})
+		$("button").click(function(){
+			var idHora = $(this).closest("tr").find("th").html();
 		});
 
-		$('#datepicker').on(
-				'changeDate',
-				function() {
-
-					$('#my_hidden_input').val(
-							$('#datepicker').datepicker('getFormattedDate')
-
-					);
-				});
 	</script>
 
 	<script src="js/custom.js"></script>

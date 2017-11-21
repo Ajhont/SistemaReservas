@@ -80,7 +80,7 @@ public class Reservas {
 				"inner join horas as ho " +
 				"on ha.Horas_idHoras = ho.idHoras " +
 				"where ag.rutMedico = '" + rut +
-				"' and ho.fechaHora = '2017-11-07'";
+				"' and ho.fechaHora = '"+ fecha +"'";
 
 		Statement st = con.createStatement();
 
