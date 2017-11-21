@@ -158,7 +158,7 @@
 								<div class="form-group">
 									<div class="form-group">
 										<label for="rutPaciente">RUT del paciente</label> 
-										<input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5">
+										<input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5" required>
 									</div>
 								</div>
 							</div>

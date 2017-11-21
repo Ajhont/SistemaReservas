@@ -34,25 +34,26 @@ public class listaController extends HttpServlet {
 	private void procesarPeticion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			String fecha =request.getParameter("fecha");
+			if(fecha==null) {
 			Calendar calendario = Calendar.getInstance();
-
 			String dia = Integer.toString(calendario.get(Calendar.DATE));
 			String mes = Integer.toString(calendario.get(Calendar.MONTH)+1);
 			String annio = Integer.toString(calendario.get(Calendar.YEAR));
-
-			String fechaActual = annio + "-" + mes + "-" + dia;
+			fecha = annio+"-"+mes+"-"+dia;
+			}
 			String rutMedico = request.getParameter("rutMedico");			
 			String especialidad = request.getParameter("especialidad");
 			String area = request.getParameter("area");
 			String ciudad = request.getParameter("ciudad");
 			String rutPaciente = request.getParameter("rutPaciente");
 
-			ResultSet horas = Reservar.obtencionHoras(rutMedico, fechaActual);
+			ResultSet horas = Reservar.obtencionHoras(rutMedico, fecha);
 			ResultSet medico = Reservar.detallesMedico(rutMedico);
 
 			request.setAttribute("listaHoras", horas);
 			request.setAttribute("detalleMedico", medico);
-			request.setAttribute("fechaActual", fechaActual);
+			request.setAttribute("fecha", fecha);
 			request.setAttribute("especialidad", especialidad);
 			request.setAttribute("area", area);
 			request.setAttribute("ciudad", ciudad);

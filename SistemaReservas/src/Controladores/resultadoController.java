@@ -65,7 +65,7 @@ public class resultadoController extends HttpServlet {
 			request.setAttribute("area", area);
 			request.setAttribute("ciudad", ciudad);
 			request.setAttribute("rutPaciente", rutPaciente);
-			request.getRequestDispatcher("listado.jsp").forward(request, response);
+			request.getRequestDispatcher(".jsp").forward(request, response);
 
 		} catch (Exception ex) {
 			request.setAttribute("error", "Error al intentar cargar los datos");

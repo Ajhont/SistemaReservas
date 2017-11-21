@@ -90,18 +90,28 @@
 								ResultSet detalleMedico = (ResultSet) request.getAttribute("detalleMedico");
 								detalleMedico.next();
 							%>
+
+
 							<input type="hidden" name="rutMedico"
-								value="<%=detalleMedico.getString("rutMedico")%>">
-								
-								
-								
+								value="<%=detalleMedico.getString("rutMedico")%>"> <input
+								type="hidden" name="especialidasd"
+								value="<%=request.getAttribute("especialidad")%>"> <input
+								type="hidden" name="area"
+								value="<%=request.getAttribute("area")%>"> <input
+								type="hidden" name="ciudad"
+								value="<%=request.getAttribute("ciudad")%>"> <input
+								type="hidden" name="rutPaciente"
+								value="<%=request.getAttribute("rutPaciente")%>">
+
+
 							<div class="media">
 								<div class="col-sm-2">
 									<img class="media-object img-circle"
 										src="img/perfil-doctor.jpg">
 								</div>
 								<div class="col-sm-7">
-									<h4 class="media-heading">Dr.<%=detalleMedico.getString("nombreMedico")%></h4>
+									<h4 class="media-heading">
+										Dr.<%=detalleMedico.getString("nombreMedico")%></h4>
 									<p><%=request.getAttribute("especialidad")%>-<%=request.getAttribute("area")%></p>
 									<p><%=request.getAttribute("ciudad")%></p>
 									<p></p>
@@ -113,7 +123,7 @@
 										<th class="hidden"></th>
 										<th class="col-sm-4">Hora</th>
 										<th class="col-sm-5">Estado</th>
-										<th class="col-sm-3"><%=request.getAttribute("fechaActual")%></th>
+										<th class="col-sm-3"><%=request.getAttribute("fecha")%></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -157,7 +167,7 @@
 							</table>
 						</div>
 						<div class="col-md-2"->
-							<div id="datepicker" data-date="12/08/2017"></div>
+							<div id="datepicker" data-date=""></div>
 							<input type="hidden" id="my_hidden_input">
 
 						</div>
@@ -211,10 +221,9 @@
 	<script>
 		window.jQuery
 				|| document
-						.write(
-								'<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+						.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
 	</script>
-		<script src="js/plugins.js"></script>
+	<script src="js/plugins.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script src="js/paralax.js"></script>
@@ -224,18 +233,35 @@
 	<script src="js/main.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/bootstrap-datepicker.es.min.js"></script>
-		
-		<script type="text/javascript">
+
+	<script type="text/javascript">
 		$('#datepicker').datepicker({
-			language : "es"
-		});
-		$('#datepicker').on(
+			format : "dd/mm/yyyy",
+			todayHighlight : true,
+		}).on(
 				'changeDate',
-				function() {
-					$('#my_hidden_input').val(
-							$('#datepicker').datepicker('getFormattedDate')
-					);
-				});
+				function(e) {
+
+					var dia = e.date.getDate();
+					var mes = e.date.getMonth() + 1;
+					var anio = e.date.getFullYear();
+					var fecha = anio + "-" + mes + "-" + dia;
+
+					var rutMedico = $("input[name='rutMedico']").val();
+					var especialidad = $("input[name='especialidad']").val();
+					var area = $("input[name='area']").val();
+					var ciudad = $("input[name='ciudad']").val();
+					var rutPaciente = $("input[name='rutPaciente']").val();
+
+					location.href = "./listaController?fecha=" + fecha
+							+ "&rutMedico=" + rutMedico + "&especialidad="
+							+ especialidad + "&area=" + area + "&ciudad="
+							+ ciudad + "&rutPaciente=" + rutPaciente;
+
+				})
+		$("button").click(function() {
+			var idHora = $(this).closest("tr").find("th").html();
+		});
 	</script>
 	<script src="js/custom.js"></script>
 
@@ -243,23 +269,22 @@
 	<script src="js/custom.js"></script>
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
-		(
-								function(b, o, i, l, e, r) {
-									b.GoogleAnalyticsObject = l;
-									b[l] || (b[l] = function() {
-										(b[l].q = b[l].q || []).push(arguments)
-									});
-									b[l].l = +new Date;
-									e = o.createElement(i);
-									r = o.getElementsByTagName(i)[0];
-									e.src = 'https://www.google-analytics.com/analytics.js';
-									r.parentNode.insertBefore(e, r)
-								}(window, document, 'script', 'ga'));
+		(function(b, o, i, l, e, r) {
+			b.GoogleAnalyticsObject = l;
+			b[l] || (b[l] = function() {
+				(b[l].q = b[l].q || []).push(arguments)
+			});
+			b[l].l = +new Date;
+			e = o.createElement(i);
+			r = o.getElementsByTagName(i)[0];
+			e.src = 'https://www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e, r)
+		}(window, document, 'script', 'ga'));
 		ga('create', 'UA-XXXXX-X', 'auto');
 		ga('send', 'pageview');
 	</script>
 
 
-	
+
 </body>
 </html>
