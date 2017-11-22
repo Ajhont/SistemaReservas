@@ -94,12 +94,18 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-8">
+						
 							<%
 								ResultSet detalleMedico = (ResultSet) request.getAttribute("detalleMedico");
 								detalleMedico.next();
 							%>
-							<input type="hidden" name="rutMedico"
-								value="<%=detalleMedico.getString("rutMedico")%>">
+							
+							<input type="hidden" name="rutMedico" value="<%=detalleMedico.getString("rutMedico")%>">
+							<input type="hidden" name="especialidad" value="<%=request.getAttribute("especialidad")%>">
+							<input type="hidden" name="area" value="<%=request.getAttribute("area")%>">
+							<input type="hidden" name="ciudad" value="<%=request.getAttribute("ciudad")%>">
+							<input type="hidden" name="rutPaciente" value="<%=request.getAttribute("rutPaciente")%>">
+							
 							<div class="media">
 								<div class="col-sm-2">
 									<img class="media-object img-circle" src="img/silueta.jpg">
@@ -252,9 +258,41 @@
 	</script>
 
 	<script type="text/javascript">
-	$( function() {
-	    $( "#datepicker" ).datepicker();
-	  } );
+	$(document).ready(function(){
+		    $( "#datepicker" ).datepicker({
+		    	format: "dd/mm/yyyy",
+		    	todayHighlight:true,
+		    }).on('changeDate',function(e){
+		    	var dia = e.date.getDate();
+		    	var mes = e.date.getMonth()+1;
+		    	var annio = e.date.getFullYear();
+		    	var fecha = annio + "-" +mes+ "-" +dia;
+		    	
+		    	var rutMedico = $("input[name='rutMedico']").val();
+		    	var especialidad = $("input[name='especialidad']").val();
+		    	var area = $("input[name='area']").val();
+		    	var ciudad = $("input[name='ciudad']").val();
+		    	var rutPaciente = $("input[name='rutPaciente']").val();
+		    	
+		    	location.href="./listadoController?fecha="+fecha+"&rutMedico="+rutMedico+
+		    			"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+
+		    			"&rutPaciente="+rutPaciente;
+		    })
+		    $('button').click(function(){
+		    	var idHora = $(this).closest("tr").find("th").html();
+		    	var rutPaciente = $("input[name='rutPaciente']").val();
+		    	var rutMedico = $("input[name='rutMedico']").val();
+		    	var especialidad = $("input[name='especialidad']").val();
+		    	var area = $("input[name='area']").val();
+		    	var ciudad = $("input[name='ciudad']").val();
+		    	
+		    	location.href="./horasController?idHora="+idHora+"&rutMedico="+rutMedico+
+    			"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+
+    			"&rutPaciente="+rutPaciente;
+		    	
+		    });
+	});
+	
 	</script>
 </body>
 </html>
