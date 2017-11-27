@@ -117,7 +117,7 @@
 									<input type= "hidden" name="rutPaciente" value="<%= request.getAttribute("rutPaciente")%>">
 								<div class="media">
 									<div class="col-sm-2">
-										<img class="media-object img-circle" src="img/silueta.jpg">
+										<img class="media-object img-circle" src="img/calavera.gif">
 									</div>
 									<div class="col-sm-7" style="margin-top: 2%">
 										<h4 class="media-heading">Dr.<%=listaMedicos.getString("nombreMedico")%></h4>

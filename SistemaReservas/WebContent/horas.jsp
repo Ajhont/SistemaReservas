@@ -160,7 +160,7 @@
 							</table>
 						</div>
 						<div class="col-sm-2">
-							<div id="datepicker" data-date="12/08/2017"></div>
+							<div id="datepicker" data-date=""></div>
 							<input type="hidden" id="my_hidden_input">
 
 						</div>
@@ -231,38 +231,34 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('a[href^="#"]').on('click', function(e) {
-				e.preventDefault();
+	$('#datepicker').datepicker({
+		
+		format : "dd/mm/yyyy",
+		todayHighlight: true,
+	}). on('changeDate', function(e) {
+		
+		var dia = e.date.getDate();
+		var mes = e.date.getMonth()+1;
+		var anio = e.date.getFullYear();
+		var fecha = anio + "-"+ mes + "-"+ dia;
+		
+		var rutMedico = $("input[name='rutMedico']").val();
+		var especialidad = $("input[name='especialidad']").val();
+		var area = $("input[name='area']").val();
+		var ciudad = $("input[name='ciudad']").val();
+		var rutPaciente = $("input[name='rutPaciente']").val();
+		
+		location.href="./resultController?fecha="+fecha+"&rutMedico="+rutMedico+
+				"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+
+				"&rutPaciente="+rutPaciente;
+		
+	})
+	$("button").click(function(){
+		var idHora = $(this).closest("tr").find("th").html();
+	});
 
-				var target = this.hash;
-				var $target = $(target);
-
-				$('html, body').stop().animate({
-					'scrollTop' : $target.offset().top
-				}, 900, 'swing');
-			});
-		});
 	</script>
-
 	<script src="js/custom.js"></script>
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
-	<script type="text/javascript">
-		$('#datepicker').datepicker({
-			language : "es"
-		});
-
-		$('#datepicker').on(
-				'changeDate',
-				function() {
-
-					$('#my_hidden_input').val(
-							$('#datepicker').datepicker('getFormattedDate')
-
-					);
-				});
-	</script>
 	<script>
 		(function(b, o, i, l, e, r) {
 			b.GoogleAnalyticsObject = l;

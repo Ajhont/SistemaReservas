@@ -161,8 +161,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">RUT del paciente</label>
                                     
-                                    <input type="text" name="rutP" class="form-control" id="exampleInputEmail1"
-                                           placeholder="Ej: 12345678-5">
+                                    <input type="text" name="rutP" class="form-control" id="exampleInputEmail1" placeholder="Ej: 12345678-5" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="radio">

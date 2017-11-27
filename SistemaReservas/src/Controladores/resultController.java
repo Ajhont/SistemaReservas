@@ -28,24 +28,29 @@ public class resultController extends HttpServlet {
 			throws ServletException, IOException {
 			
 			try {
+				String fecha = request.getParameter("fecha");
+				if(fecha==null) {
 				Calendar calendario = Calendar.getInstance();
 				
 				String dia = Integer.toString(calendario.get(Calendar.DATE));
 				String mes = Integer.toString(calendario.get(Calendar.MONTH)+1);
 				String annio = Integer.toString(calendario.get(Calendar.YEAR));
-
-				String fechaActual = annio + "-"+ mes +"-"+ dia;
+				
+				fecha = annio + "-" + mes + "-" + dia;
+				
+				}
 				String rutMedico = request.getParameter("rutMedico");
 				String especialidad = request.getParameter("especialidad");
 				String area = request.getParameter("area");
 				String ciudad = request.getParameter("ciudad");
 				String rutPaciente = request.getParameter("rutPaciente");
 				
-				ResultSet horas = Reserva.obtencionHoras(rutMedico, fechaActual);
+				ResultSet horas = Reserva.obtencionHoras(rutMedico, fecha);
 				ResultSet medico = Reserva.detalleMedico(rutMedico);
+				
 				request.setAttribute("listaHoras", horas);
 				request.setAttribute("detalleMedico", medico);
-				request.setAttribute("fechaActual", fechaActual);
+				request.setAttribute("fechaActual", fecha);
 				request.setAttribute("especialidad", especialidad);
 				request.setAttribute("area", area);
 				request.setAttribute("ciudad", ciudad);
@@ -56,7 +61,6 @@ public class resultController extends HttpServlet {
 			{
 				request.setAttribute("error", "Error al intentar acceder a los datos");
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
-			}
-		}	
-
+		}
+	}	
 }

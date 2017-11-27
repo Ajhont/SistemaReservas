@@ -136,25 +136,11 @@
                         <div class="panel-heading">Ingresa datos del paciente</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">RUT del paciente</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                           placeholder="Ej: 12345678-5">
-                                </div>
-                                <div class="form-group">
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="dni" id="dni2" value="option2">
-                                            RUT
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label class="radio">
-                                            <input type="radio" name="dni" id="dni3" value="option3">
-                                            Pasaporte
-                                        </label>
-                                    </div>
-                                </div>
+                               <div class="form-group">
+										<label for="rutPaciente">RUT del paciente</label> 
+										<input type="text" name="rutP" class="form-control" placeholder="Ej: 12345678-5" required>
+									</div>
+                                
                             </div>
                         </div>
                     </div>
