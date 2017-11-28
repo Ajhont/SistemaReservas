@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -76,28 +77,47 @@
             <div class="panel-heading"><b>Hora Reservada con:</b></div>
             <div class="panel-body">
                 <div class="row">
+                <%
+							ResultSet detalleMedico = (ResultSet) request.getAttribute("detalleMedico");
+							detalleMedico.next();
+						%>
+                
                     <div class="col-sm-3">
                         <img class="img-circle" src="img/silueta.jpg" alt="Sider Big Image">
                     </div>
-                    <div class="col-md-6 ti" style="margin-top: 2%">
-                        <p><b>Dr.Juan Esteban Riquelme</b></p>
-                        <p>Medicina General Adulto</p>
-                        <p>Temuco</p>
+                    <div class="col-sm-6 ti" style="margin-top: 2%">
+							<h4 class="media-heading">
+								Dr.
+								<%=detalleMedico.getString("nombreMedico")%></h4>
+							<p><%=request.getAttribute("especialidad")%>
+								/
+								<%=request.getAttribute("area")%></p>
+							<p><%=request.getAttribute("ciudad")%></p>
+							<p></p>
 
-                    </div>
+						</div>
                     <div class="col-md-3">
                         <div class="title">
-                            <p>
-                                El día <b>27-10-2017</b>
-                            </p>
-                            <p>
-                                A las <b>09:00 hrs</b>
-                            </p>
+                           <%
+									ResultSet detalleHora = (ResultSet) request.getAttribute("detalleHora");
+									detalleHora.next();
+								%>
+
+								<p>
+									El día <b><%=detalleHora.getString("fechaHora")%></b>
+								</p>
+								<p>
+									A las <b><%=detalleHora.getString("horaHoras")%></b>
+								</p>
                             <p>
                                 Número de Reserva
                             </p>
+                            <%
+									ResultSet detalleReserva = (ResultSet) request.getAttribute("detalleReserva");
+									detalleReserva.next();
+								%>
                             <p>
-                                <button class="btn btn-warning">4525854</button>
+                                <button class="btn btn-warning"><%=detalleReserva.getString("idReserva")%></button>
                             </p>
                         </div>
                     </div>

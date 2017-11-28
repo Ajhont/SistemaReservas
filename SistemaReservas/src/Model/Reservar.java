@@ -2,6 +2,7 @@ package Model;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 import com.mysql.jdbc.Connection;
 
@@ -81,29 +82,29 @@ public class Reservar {
 		return rs;
 	}
 	
-	public static ResultSet crearPaciente(String rutPaciente,String nombrePaciente, String apellidoP, String apellidoM, String email, String telefono)throws Exception {
+	public static ResultSet detalleReserva(String idHora)throws Exception {
 		Conexion conexion = new Conexion();
 		Connection con = conexion.getConexion();
-		String query = "INSERT INTO `sysreservas`.`paciente`\r\n" + 
-				"(`rutPaciente`,\r\n" + 
-				"`nombrePaciente`,\r\n" + 
-				"`aPaternoPaciente`,\r\n" + 
-				"`aMaternoPaciente`,\r\n" + 
-				"`email`,\r\n" + 
-				"`telefono`)\r\n" + 
-				"VALUES\r\n" + 
-				"('"+rutPaciente+"',\r\n" + 
-				"'"+nombrePaciente+"',\r\n" + 
-				"'"+apellidoP+"',\r\n" + 
-				"'"+apellidoM+"',\r\n" +  
-				"'"+email+"',\r\n" + 
-				"'"+telefono+"');";
+		String query = "SELECT * FROM reserva where Horas_idHoras = '" + idHora + "'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		return rs;
 	}
 	
-	public static ResultSet updatePaciente(String rutPaciente,String nombrePaciente, String apellidoP, String apellidoM, String email, String telefono)throws Exception {
+	public void crearPaciente(String rutPaciente,String nombrePaciente, String apellidoP, String apellidoM, String email, String telefono)throws Exception {
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		Statement st = con.createStatement();
+		PreparedStatement psInsertar;
+		
+		String query = "INSERT INTO paciente (rutPaciente,nombrePaciente,aPaternoPaciente,aMaternoPaciente,email,telefono)"+" VALUES ('"+rutPaciente+"','"+nombrePaciente+
+			"','"+apellidoP+"','"+apellidoM+"','"+email+"','"+telefono+"');";
+		psInsertar= con.prepareStatement(query);
+		
+		psInsertar.executeUpdate(query);
+	}
+	
+	public void updatePaciente(String rutPaciente,String nombrePaciente, String apellidoP, String apellidoM, String email, String telefono)throws Exception {
 		Conexion conexion = new Conexion();
 		Connection con = conexion.getConexion();
 		String query = "UPDATE `sysreservas`.`paciente`\r\n" + 
@@ -115,46 +116,29 @@ public class Reservar {
 				"`telefono` = '"+telefono+"'\r\n" + 
 				"WHERE `rutPaciente` = '"+rutPaciente+"';";
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		return rs;
+		st.executeUpdate(query);
 	}
 	
-	public static ResultSet reservarHora(String rutPaciente, String rutMedico, String idHora)throws Exception {
+	public void reservarHora(String rutMedico, String rutPaciente,  String idHora)throws Exception {
 		Conexion conexion = new Conexion();
 		Connection con = conexion.getConexion();
-		String query = "INSERT INTO `sysreservas`.`reserva`\r\n" + 
-				"`rutMedico`,\r\n" + 
-				"`rutPaciente`,\r\n" + 
-				"`Horas_idHoras`)\r\n" + 
-				"VALUES\r\n" + 
-				"'"+rutMedico+"',\r\n" + 
-				"'"+rutPaciente+"',\r\n" + 
-				"'"+idHora+"');";
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		return rs;
+		PreparedStatement psInsertar;
+		String query = "INSERT INTO reserva (rutMedico,rutPaciente,Horas_idHoras) "+"VALUES('"+rutMedico+"','"+rutPaciente+"','"+idHora+"');";
+		psInsertar= con.prepareStatement(query);
+		
+		psInsertar.executeUpdate(query);
 	}
 	
-	public static ResultSet actualizarEstadoHora(String idHora)throws Exception {
+	public void actualizarEstadoHora(String idHora)throws Exception {
 		Conexion conexion = new Conexion();
 		Connection con = conexion.getConexion();
 		String query = "UPDATE `sysreservas`.`horas`\r\n" + 
 				"SET\r\n" + 
 				"`estadoHoras` = 0\r\n" + 
-				"WHERE `idHoras` = '"+idHora+"';";
+				"WHERE `idHoras` = '"+idHora+"'";
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		return rs;
+		st.executeUpdate(query);
 	}
-	
-	public static ResultSet detalleReserva(String idHora)throws Exception {
-		Conexion conexion = new Conexion();
-		Connection con = conexion.getConexion();
-		String query = "SELECT * FROM reserva where idHoras = '" + idHora + "'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(query);
-		return rs;
-	}
-	
 	
 }

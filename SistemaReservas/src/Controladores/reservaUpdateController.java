@@ -12,16 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import Model.Reservar;
 
 /**
- * Servlet implementation class reservaController
+ * Servlet implementation class reservaUpdateController
  */
-@WebServlet("/reservaController")
-public class reservaController extends HttpServlet {
+@WebServlet("/reservaUpdateController")
+public class reservaUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public reservaUpdateController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		this.procesarPeticion(request, response);
 	}
@@ -50,7 +58,7 @@ public class reservaController extends HttpServlet {
 			
 			Reservar reserva = new Reservar();
 			
-			reserva.crearPaciente(rutPaciente, nombrePaciente, aPaterno, aMaterno, email, telefono);
+			reserva.updatePaciente(rutPaciente, nombrePaciente, aPaterno, aMaterno, email, telefono);
 			reserva.reservarHora(rutMedico, rutPaciente, idHora);
 			reserva.actualizarEstadoHora(idHora);
 			
@@ -74,4 +82,5 @@ public class reservaController extends HttpServlet {
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
+
 }
