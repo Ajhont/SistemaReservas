@@ -40,7 +40,7 @@ public class reservaController extends HttpServlet {
 			
 			ResultSet paciente = Reservar.consultarPaciente(rutPaciente);
 			ResultSet detalleHora = Reservar.detalleHora(idHora);
-			ResultSet medico = Reservar.detalleHora(rutMedico);
+			ResultSet medico = Reservar.detallesMedico(rutMedico);
 
 			request.setAttribute("paciente", paciente);
 			request.setAttribute("detalleHora", detalleHora);
