@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es">
+<%@ page import="java.sql.ResultSet"%>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -71,58 +72,77 @@
         <div class="panel panel-primary">
             <div class="panel-heading"><b>Estas reservando con:</b></div>
             <div class="panel-body">
-                <div class="row">
+<!--           <div class="row"> -->
+                <div class="col-sm-8">
+                <% 
+               		 ResultSet detalleMedico = (ResultSet)request.getAttribute("detalleMedico");
+					 detalleMedico.next();
+                %>
+                	
+                	<input type="hidden" name="rutMedico" value="<%= detalleMedico.getString("rutMedico") %>">
+                    <input type="hidden" name="especialidad" value="<%= request.getAttribute("especialidad")%>">
+                    <input type="hidden" name="area" value="<%= request.getAttribute("area") %>">
+                    <input type="hidden" name="ciudad" value="<%= request.getAttribute("ciudad")%>">
+                	<div class= "media">
                     <div class="col-sm-3">
                         <img class="img-circle" src="http://1.bp.blogspot.com/-hefBHcDHL38/UrAqPy61XWI/AAAAAAAAFSo/h3xu6BjMKiM/s1600/calavera_by_deiby_ybied-d4zdmee.gif" alt="Dr. Juan Riquelme">
                     </div>
                     <div class="col-sm-6 ti" style="margin-top: 2%">
-                        <p><b>Dr.Juan Esteban Riquelme</b></p>
-                        <p><Strong>Medicina General Adulto</p></Strong>
-                        <p><Strong>Temuco</p></Strong>
-                    </div>
+                    
+                    <h4 class="media-heading">Dr. <%= detalleMedico.getString("nombreMedico") %></h4>	
+                    <p>Area Medica: <Strong><%= request.getAttribute("especialidad")%> / <%=request.getAttribute("area") %></strong>
+                    <p>Ubicación: <Strong><%= request.getAttribute("ciudad")%></strong></p>    
+                  </div>
+                 </div>
+<!--                </div>    -->
+<!--                         <p><b>Dr.Juan Esteban Riquelme</b></p> -->
+<!--                         <p><Strong>Medicina General Adulto</p></Strong> -->
+<!--                         <p><Strong>Temuco</p></Strong> -->
+<!--                     </div> -->
+                <% 
+               		 ResultSet detalleHora = (ResultSet)request.getAttribute("detalleHora");
+					 detalleHora.next();
+                %>
                     <div class="col-sm-3">
+                    	<input type="hidden" name= "idHora" value="<%=detalleHora.getString("idHoras")%>">
                         <div class="title">
-                            <p>
-                                El día <b>27-10-2017</b>
-                            </p>
-                            <p>
-                                A las <b>09:00 hrs</b>
-                            </p>
+                            <p>El día <Strong><%=detalleHora.getString("fechaHora")%></Strong></p>
+                            <p>A Las <Strong><%=detalleHora.getString("horaHoras")%>hrs</Strong></p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
         <div class="panel panel-primary">
             <div class="panel-heading"><b>Información del paciente</b></div>
             <div class="panel-body">
+            	 <% 
+               		 ResultSet paciente = (ResultSet)request.getAttribute("paciente");
+					 boolean pac = paciente.next();
+                %> 
                 <div class="form-group row">
                     <div class="col-sm-4">
-                        <p><b>Rut:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+                        <label for="rut">Rut:</label>
+                        <input class="form-control" type="date" value="<%= request.getAttribute("rutPaciente")%>">
+                    </div>
+                    <div class="col-sm-4">
+                        <p><b>Nombre:</b></p>
+                        <input class="form-control" type="date" value="<%= (pac)? paciente.getString ("nombrePaciente"): "" %>">
                     </div>
                     <div class="col-sm-4">
                         <p><b>Apellido Paterno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+                        <input class="form-control" type="date" value="<%= (pac)? paciente.getString ("aPaternoPaciente"): "" %>">
                     </div>
                     <div class="col-sm-4">
                         <p><b>Telefono:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-4">
-                        <p><b>Nombre:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+                        <input class="form-control" type="date" value="<%= (pac)? paciente.getString ("telefono"): "" %>">
                     </div>
                     <div class="col-sm-4">
                         <p><b>Apellido Materno:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+                        <input class="form-control" type="date" value="<%= (pac)? paciente.getString ("aMaternoPaciente"): "" %>">
 
                     </div>
                     <div class="col-sm-4">
                         <p><b>Email:</b></p>
-                        <input class="form-control" type="date" value="2011-08-19">
+                        <input class="form-control" type="date" value="<%= (pac)? paciente.getString ("email"): "" %>">
                     </div>
                 </div>
                 <div class="row">

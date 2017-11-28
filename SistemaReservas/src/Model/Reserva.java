@@ -62,9 +62,34 @@ public class Reserva {
 	}
 
 	public static ResultSet detalleMedico(String rut) throws Exception {
+		
 		Conexion conexion = new Conexion();
 		Connection con = conexion.getConexion();
 		String query = "SELECT * FROM medicos as med where med.rutMedico = '" + rut + "'";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		return rs;
+	}
+	
+	public static ResultSet  consultarPaciente(String rut) throws Exception {
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM paciente as pas " + 
+					   "where pas.rutPaciente = '" + rut + "'";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(query);
+		return rs;
+	}
+	
+	public static ResultSet detalleHora(String idHora) throws Exception {
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM horas as hrs " + 
+					   "where hrs.idHoras = '" + idHora + "'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		return rs;

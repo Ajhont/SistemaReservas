@@ -231,8 +231,7 @@
 
 
 	<script type="text/javascript">
-	$('#datepicker').datepicker({
-		
+	$('#datepicker').datepicker({	
 		format : "dd/mm/yyyy",
 		todayHighlight: true,
 	}). on('changeDate', function(e) {
@@ -255,7 +254,23 @@
 	})
 	$("button").click(function(){
 		var idHora = $(this).closest("tr").find("th").html();
+		
+		var rutMedico = $("input[name='rutMedico']").val();
+		var especialidad = $("input[name='especialidad']").val();
+		var area = $("input[name='area']").val();
+		var ciudad = $("input[name='ciudad']").val();
+		var rutPaciente = $("input[name='rutPaciente']").val();
+		
+		location.href="./reservaController?idHora="+idHora+"&rutMedico="+rutMedico+
+				"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+
+				"&rutPaciente="+rutPaciente;
 	});
+	
+// 	$("button").click(function(){
+// 		var idHora = $(this).closest("tr").find("th").html();
+
+		
+// 	});
 
 	</script>
 	<script src="js/custom.js"></script>
