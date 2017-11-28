@@ -217,10 +217,22 @@
 					"&rutPaciente="+rutPaciente;
 			
 		})
-		$("button").click(function(){
+			$("button").click(function(){
 			var idHora = $(this).closest("tr").find("th").html();
+			
+			var rutMedico = $("input[name='rutMedico']").val();
+			var especialidad = $("input[name='especialidad']").val();
+			var area = $("input[name='area']").val();
+			var ciudad = $("input[name='ciudad']").val();
+			var rutPaciente = $("input[name='rutPaciente']").val();
+			
+			location.href= "./reservaController?idHora="+idHora+"&rutMedico="+rutMedico+
+					"&especialidad="+especialidad+"&area="+area+"&ciudad="+ciudad+"&rutPaciente="+rutPaciente;
+					
+			
+			
+			
 		});
-
 	</script>
 
 	<script src="js/custom.js"></script>

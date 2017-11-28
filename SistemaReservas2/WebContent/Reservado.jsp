@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,91 +63,154 @@
 	<section id="contact-us">
 	<div class="container ">
 
-		
-		<div class="panel panel-primary">
-			<div class="panel-heading ">Estas reservando con:</div>
-			<div class="panel-body row">
-			 <div class="col-md-3">
-  		 <img src="https://i.ytimg.com/vi/esOcn5y86mM/hqdefault.jpg" class="img-circle" width="200" height="200">
-		</div>
-			 <div class="col-md-5"><h3>Dr. Goku</h3>
-			 <br/>
-			 <p>Area Medica: <strong>Medicina General Adulto</strong></p>
-			 <p>Ubicacion:<strong> Temuco</strong></p>
-			 </div>
-			  <div class="col-md-3"><h3> </h3></div>
-			 <div class="col-md-3">
-			<br/>
-			<br/>
-			 <p>Dia: <strong>27-10-2017</strong></p>
-			 <p>A las: <strong> 09:00 hrs</strong></p>
-			 </div>
-			
-  			</div>
-			 <div class="clearfix visible-xs-block"></div>
 
 
 
-			</div>
-			
+		<form method="POST" action="">
+
 			<div class="panel panel-primary">
-			<div class="panel-heading ">informacion del paciente:</div>
-			<div class="panel-body row">
-			
-			<form>
-			<div class="col-md-4">
-			<label>Rut del paciente</label>
-			<input type="text" class="form-control" name="rut" placeholder="RUT sin puntos 12345678-9">
-			</div>
-			
-			<div class="col-md-4">
-			<label>Apellido Paterno</label>
-			<input type="text" class="form-control" name="apellidoPaterno" placeholder="Apellido">
-			</div>
-			
-			<div class="col-md-4">
-			<label>Telefono</label>
-			<input type="text" class="form-control" name="telefono" placeholder="Telefono">		
-			</div>
-			
-			
-			<div class="col-md-4">
-			<label>Nombre</label>
-			<input type="text" class="form-control" name="Name" placeholder="Nombre">
-			</div>
-			
-			<div class="col-md-4">
-			<label>Apellido Materno</label>
-			<input type="text" class="form-control" name="apellidoMaterno" placeholder="Apellido Materno">
-			</div>
-			
-			<div class="col-md-4">
-			<label>Email</label>
-			<input type="text" class="form-control" name="email" placeholder="Email">		
-			</div>
-			
-			
-			
-			 <div class="col-lg-12 margintop10 field">
-									<div class="col-lg-4"></div>
-									<div class="col-lg-4">
-									<br/>
-										<button type="submit" class="btn btn-primary btn-block">Reservar:</button>
+				<div class="panel-heading">
+					<strong>Estas reservando con:</strong>
+				</div>
+				<div class="panel-body">
+				<div class="col-sm-8">
+					<%
+						ResultSet detalleMedico = (ResultSet) request.getAttribute("detalleMedico");
+						detalleMedico.next();
+					%>
+					
+					<input type="hidden" name="rutMedico"
+						value="<%=detalleMedico.getString("rutMedico")%>"> <input
+						type="hidden" name="especialidad"
+						value="<%=request.getAttribute("especialidad")%>"> <input
+						type="hidden" name="area"
+						value="<%=request.getAttribute("area")%>"> <input
+						type="hidden" name="ciudad"
+						value="<%=request.getAttribute("ciudad")%>">
 
-									</div>
-								
-								</div>
-			
-			
-			 </form>
-  			</div>
-			 <div class="clearfix visible-xs-block"></div>
+					<div class="media">
+						<div class="col-sm-3">
+							<img src="https://i.ytimg.com/vi/esOcn5y86mM/hqdefault.jpg"
+								class="img-circle" width="200" height="200">
+						</div>
+
+						<div class="col-sm-9">
+							<h4 class="media-heading">
+								Dr.
+								<%=detalleMedico.getString("nombreMedico")%></h4>
+							<p>
+								Área Medica: <strong><%=request.getAttribute("especialidad")%>
+									/ <%=request.getAttribute("area")%></strong>
+							</p>
+							<p>
+								Ubicacion: <strong> <%=request.getAttribute("ciudad")%></strong>
+							</p>
+
+						</div>
+
+					</div>
 
 
 
+					<%
+						ResultSet detalleHora = (ResultSet) request.getAttribute("detalleHora");
+						detalleHora.next();
+					%>
+
+					<div class="col-sm-4">
+						<input type="hidden" name="idHora"
+							value="<%=detalleHora.getString("idHoras")%>">
+						<p>
+							El dia <strong><%=detalleHora.getString("fechaHora")%></strong>
+						</p>
+						<p>
+							A las <strong> <%=detalleHora.getString("horaHoras")%>
+								hrs
+							</strong>
+						</p>
+					</div>
+</div>
+				</div>
 			</div>
 
-		</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<strong>Informacion del paciente</strong>
+				</div>
+
+				<div class="panel-body">
+					<%
+						ResultSet paciente = (ResultSet) request.getAttribute("paciente");
+						boolean pac = paciente.next();
+					%>
+
+
+
+
+					<div class="col-md-4">
+						<label>Rut del paciente</label> <input type="text"
+							class="form-control" name="rut" id="rut"
+							value="<%=request.getAttribute("rutPaciente")%>">
+					</div>
+
+					<div class="col-md-4">
+						<label>Apellido Paterno</label> <input type="text"
+							class="form-control" name="apellidoPaterno"
+							placeholder="Apellido"
+							value="<%=request.getAttribute("rutPaciente")%>">
+					</div>
+
+					<div class="col-md-4">
+						<label>Telefono</label> <input type="text" class="form-control"
+							name="telefono" placeholder="Telefono"
+							value="">
+					</div>
+
+
+					<div class="col-md-4">
+						<label>Nombre</label> <input type="text" class="form-control"
+							name="Name" placeholder="Nombre"
+							value="">
+					</div>
+
+					<div class="col-md-4">
+						<label>Apellido Materno</label> <input type="text"
+							class="form-control" name="apellidoMaterno"
+							placeholder="Apellido Materno"
+							value="">
+					</div>
+
+					<div class="col-md-4">
+						<label>Email</label> <input type="text" class="form-control"
+							name="email" placeholder="Email"
+							value="">
+					</div>
+
+
+
+					<div class="col-lg-12 margintop10 field">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-4">
+							<br />
+							<button type="submit" class="btn btn-primary btn-block">Reservar:</button>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div class="clearfix visible-xs-block"></div>
+
+
+
+	</div>
+
+	</div>
 
 	</div>
 
