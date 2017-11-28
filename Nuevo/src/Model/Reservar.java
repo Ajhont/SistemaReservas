@@ -1,0 +1,207 @@
+package Model;
+
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.mysql.jdbc.Connection;
+
+
+public class Reservar {
+	
+	public static ResultSet listaEspecialidades() throws Exception{
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "select * from especialidad";
+		
+        Statement st = con.createStatement();
+        
+        ResultSet rs = st.executeQuery(query);        
+        return rs;
+	  }
+	
+	public static ResultSet listaAreas() throws Exception{
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "select * from area";
+		
+        Statement st = con.createStatement();
+        
+        ResultSet rs = st.executeQuery(query);
+        return rs;
+	  }
+	
+	public static ResultSet 
+		solicitudEspecialistas(String especialidad, String area, String ciudad ) 
+				throws Exception{
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM medicos as med "+ 
+				"inner join clinica as cli "+ 
+				"on med.idClinica = cli.idClinica "+ 
+				"inner join ciudad as ciu "+ 
+				"on cli.idCiudad = ciu.idCiudad "+ 
+				"inner join area_medicos as are_med "+
+				"on med.rutMedico = are_med.Medicos_rutMedico "+
+				"inner join area as area "+
+				"on are_med.Area_idArea = area.idArea "+
+				"inner join sysreservas.especialidad as esp "+
+				"on med.idEspecialidad = esp.idEspecialidad "+
+				"where esp.nombreEspecialidad = '"+especialidad+
+				"' and ciu.nombreCiudad = '"+ciudad+
+				"' and area.nombreArea = '"+area+ "'" ;
+		
+        Statement st = con.createStatement();
+        
+        ResultSet rs = st.executeQuery(query);
+        return rs;
+	  }
+	
+	public static ResultSet 
+		obtencionHoras(String rut, String fecha ) 
+			throws Exception{
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM  agenda as ag "+
+				"inner join horas_agenda as ha "+
+				"on ag.idAgenda = ha.Agenda_idAgenda "+
+				"inner join horas as ho "+
+				"on ha.Horas_idHoras = ho.idHoras "+
+				"where ag.rutMedico = '"+ rut +
+				"' and ho.fechaHora = '"+ fecha +"'";
+		
+		 Statement st = con.createStatement();
+	        
+        ResultSet rs = st.executeQuery(query);
+        return rs;
+	}
+	
+	public static ResultSet 
+		detallesMedico(String rut) 
+			throws Exception{
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM  medicos as med " +
+				"where med.rutMedico = '" + rut + "'";
+		
+		 Statement st = con.createStatement();
+	        
+	    ResultSet rs = st.executeQuery(query);
+	    return rs;
+	}
+	
+	public static ResultSet 
+	consultarPaciente(String rut) 
+		throws Exception{
+	
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM  paciente as pas " +
+				"where pas.rutPaciente = '" + rut + "'";
+		
+		Statement st = con.createStatement();
+	        
+	    ResultSet rs = st.executeQuery(query);
+	    return rs;
+	}
+	
+	public static ResultSet 
+	detalleHora(String idHora) 
+		throws Exception{
+	
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM  horas as hrs " +
+				"where hrs.idHoras = '" + idHora + "'";
+		
+		Statement st = con.createStatement();
+	        
+	    ResultSet rs = st.executeQuery(query);
+	    return rs;
+	}
+	
+	public static void 
+	actualizarHora(String idHora, boolean estado) 
+		throws Exception{
+	
+		String est = (estado)?"1":"0";
+		
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "update horas set estadoHoras = " + est +
+				" where idHoras = '" + idHora + "'";
+		
+		Statement st = con.createStatement();
+	        
+	    st.executeUpdate(query);
+	}
+	
+	public static void 
+	gestionPaciente(String rutPaciente, String nombre, String paterno, String materno, String email ) 
+		throws Exception{
+	
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		ResultSet paciente = consultarPaciente(rutPaciente);
+		
+		if(!paciente.next()) {
+		String query = "insert into paciente (rutPaciente, nombrePaciente, aPaternoPaciente, aMaternoPaciente, email) " + 
+				" values('"+ rutPaciente +"','"+ nombre +"','"+ paterno +"','"+ materno +"','"+ email +"')";
+		
+		Statement st = con.createStatement();
+	        
+	    st.executeUpdate(query);
+		}
+	}
+	
+	public static ResultSet 
+	insertarReserva(String rutMedico, String rutPaciente, String idHora) 
+		throws Exception{
+	
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+				
+		
+		String query = "insert into reserva (rutMedico, rutPaciente, Horas_idHoras) " + 
+				" values('"+ rutMedico +"','"+ rutPaciente +"','"+ idHora +"')";
+		
+		Statement st = con.createStatement();	        
+	    st.executeUpdate(query);
+	    
+	    ResultSet actualización = st.getGeneratedKeys();
+	    return actualización;
+	    
+	    
+		
+	}
+	
+	public static ResultSet 
+	detalleReserva(String idReserva) 
+		throws Exception{
+	
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM  reserva as res " +
+				"where res.idReserva = '" + idReserva + "'";
+		
+		Statement st = con.createStatement();
+	        
+	    ResultSet rs = st.executeQuery(query);
+	    return rs;
+	}
+	
+}
