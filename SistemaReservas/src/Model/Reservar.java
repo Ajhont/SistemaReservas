@@ -69,4 +69,18 @@ public class Reservar {
 		ResultSet rs = st.executeQuery(query);
 		return rs;
 	}
+	public static ResultSet
+	detalleHora(String idHora)
+		throws Exception{
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+		
+		String query = "SELECT * FROM horas as hrs "+
+		"where hrs.idHoras = '"+idHora+ "'";
+		
+		Statement st = con.createStatement();
+		
+		ResultSet rs = st.executeQuery(query);
+		return rs;
+	}
 }

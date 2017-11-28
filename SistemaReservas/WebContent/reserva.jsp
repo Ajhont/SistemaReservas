@@ -74,96 +74,98 @@
 
 	<!-- Content -->
 	<section id="contact-us">
-		<div class="container">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<b>Estas reservando con:</b>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-3">
-							<img class="img-circle" src="img/perfil-doctor.jpg"
-								alt="Sider Big Image">
-						</div>
-						<div class="col-sm-6 ti" style="margin-top: 2%">
-							<p>
-								<b>Dr.Juan Esteban Riquelme</b>
-							</p>
-							<p>Medicina General Adulto</p>
-							<p>Temuco</p>
+		<form metho="POST"action"">
+			<div class="container">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<b>Estas reservando con:</b>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3">
+								<img class="img-circle" src="img/perfil-doctor.jpg"
+									alt="Sider Big Image">
+							</div>
+							<div class="col-sm-6 ti" style="margin-top: 2%">
+								<p>
+									<b>Dr.Juan Esteban Riquelme</b>
+								</p>
+								<p>Medicina General Adulto</p>
+								<p>Temuco</p>
 
+							</div>
+							<div class="col-sm-3">
+								<div class="title">
+									<p>
+										El día <b>27-10-2017</b>
+									</p>
+									<p>
+										A las <b>09:00 hrs</b>
+									</p>
+								</div>
+							</div>
 						</div>
-						<div class="col-sm-3">
-							<div class="title">
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<b>Información del paciente</b>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-sm-4">
 								<p>
-									El día <b>27-10-2017</b>
+									<b>Rut:</b>
 								</p>
+								<input class="form-control" type="text" placeholder="12345678-5">
+							</div>
+							<div class="col-sm-4">
 								<p>
-									A las <b>09:00 hrs</b>
+									<b>Apellido Paterno:</b>
 								</p>
+								<input class="form-control" type="text" placeholder="apellido">
+							</div>
+							<div class="col-sm-4">
+								<p>
+									<b>Telefono:</b>
+								</p>
+								<input class="form-control" type="number" placeholder="234 567">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-4">
+								<p>
+									<b>Nombre:</b>
+								</p>
+								<input class="form-control" type="text" placeholder="nombre">
+							</div>
+							<div class="col-sm-4">
+								<p>
+									<b>Apellido Materno:</b>
+								</p>
+								<input class="form-control" type="text"
+									placeholder="apellido materno">
+
+							</div>
+							<div class="col-sm-4">
+								<p>
+									<b>Email:</b>
+								</p>
+								<input class="form-control" type="text"
+									placeholder="nombre@dominio.cl">
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-offset-5">
+								<button href="" type="submit"
+									class="btn btn-primary ">Reservar</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<b>Información del paciente</b>
-				</div>
-				<div class="panel-body">
-					<div class="form-group row">
-						<div class="col-sm-4">
-							<p>
-								<b>Rut:</b>
-							</p>
-							<input class="form-control" type="text" placeholder="12345678-5">
-						</div>
-						<div class="col-sm-4">
-							<p>
-								<b>Apellido Paterno:</b>
-							</p>
-							<input class="form-control" type="text" placeholder="apellido">
-						</div>
-						<div class="col-sm-4">
-							<p>
-								<b>Telefono:</b>
-							</p>
-							<input class="form-control" type="number" placeholder="234 567">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-4">
-							<p>
-								<b>Nombre:</b>
-							</p>
-							<input class="form-control" type="text" placeholder="nombre">
-						</div>
-						<div class="col-sm-4">
-							<p>
-								<b>Apellido Materno:</b>
-							</p>
-							<input class="form-control" type="text"
-								placeholder="apellido materno">
-
-						</div>
-						<div class="col-sm-4">
-							<p>
-								<b>Email:</b>
-							</p>
-							<input class="form-control" type="text"
-								placeholder="nombre@dominio.cl">
-
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-offset-5">
-							<button href="horareservada.html" type="submit"
-								class="btn btn-primary ">Reservar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		</form>
 	</section>
 	<!-- End Content -->
 
@@ -220,6 +222,23 @@
 	<script src="js/jquery.sticky.js"></script>
 	<script src="js/wow.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+	$("button").click(function(){
+		var idHora= $(this).closest("tr").find("th").html();
+		
+		var rutMedico = $("input[name='rutMedico']").val();
+		var especialidad = $("input[name='especialidad']").val();
+		var area = $("input[name='area']").val();
+		var ciudad = $("input[name='ciudad']").val();
+		var rutPaciente = $("input[name='rutPaciente']").val();
+		
+		
+		location.href="./reservaController?idHora="+idHora+"&rutMedico"+
+				rutMedico+"&especialidad="+especialidad+"&area="+area+
+				"&ciudad="+ciudad+"&rutPaciente="+rutPaciente;
+		
+	});
+	</script>
 
 
 	<script type="text/javascript">
