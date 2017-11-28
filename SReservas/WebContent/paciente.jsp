@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!doctype html>
@@ -82,56 +83,74 @@
 							<div class="panel-heading"><strong>Estas reservando con:</strong></div>
 							<div class="panel-body">
 								<div class="col-sm-8">
-									<input type="hidden" name="rutMedico" value="11111111">
+									<%
+										ResultSet detalleMedico = (ResultSet)request.getAttribute("detalleMedico");
+										detalleMedico.next();
+									%>
+								
+									<input type="hidden" name="rutMedico" value="<%= detalleMedico.getString("rutMedico") %>">
+									<input type="hidden" name="especialidad" value="<%= request.getAttribute("especialidad") %>">
+									<input type="hidden" name="area" value="<%= request.getAttribute("area") %>">
+									<input type="hidden" name="ciudad" value="<%= request.getAttribute("ciudad") %>">
 									<div class="media">
 										<div class="col-sm-3">
 										<img src="img/img_avatar1.png" class="media-object img-circle"/>
 										</div>
 										<div class="col-sm-9">
-											<h4 class="media-heading">Dr. Enrique Salas Avendaño</h4>
-			        						<p>Área Médica: <strong>Medicina General Adulto</strong></p>
-											<p>Ubicación: <strong>Temuco</strong></p>
+											<h4 class="media-heading">Dr. <%= detalleMedico.getString("nombreMedico") %></h4>
+			        						<p>Área Médica: <strong><%= request.getAttribute("especialidad") %> / <%= request.getAttribute("area") %></strong></p>
+											<p>Ubicación: <strong><%= request.getAttribute("ciudad") %></strong></p>
 										</div>
 									</div>
 								</div>
+								
+								<%
+									ResultSet detalleHora = (ResultSet)request.getAttribute("detalleHora");
+									detalleHora.next();
+								%>
+								
 								<div class="col-sm-4">
-									<p>El día <strong>27-10-2017</strong></p>
-									<p>A las <strong>09:00 hrs</strong></p>
+								    <input type="hidden" name="idHora" value="<%= detalleHora.getString("idHoras") %>">
+									<p>El día <strong><%= detalleHora.getString("fechaHora") %></strong></p>
+									<p>A las <strong><%= detalleHora.getString("horaHoras") %> hrs</strong></p>
 								</div>							
 							</div>
 						</div>
 						<div class="panel panel-primary">
 							<div class="panel-heading"><strong>Información del paciente:</strong></div>
 							<div class="panel-body">
+							
+							<%
+								ResultSet paciente = (ResultSet)request.getAttribute("paciente");
+								boolean pac = paciente.next();
+							%>
+							
 								<form>
 									<div class="col-sm-4 ">
 										<div class="form-group">
 										  <label for="rut">Rut:</label>
-										  <input type="text" class="form-control" id="rut" value="11.152.158-5">
+										  <input type="text" class="form-control" id="rut" value="<%= request.getAttribute("rutPaciente") %>">
 										</div>
 										<div class="form-group">
 										  <label for="nombre">Nombre:</label>
-										  <input type="text" class="form-control" id="nombre" value="Jonathan Alfonso">
+										  <input type="text" class="form-control" id="nombre" value="<%= (pac) ? paciente.getString("nombrePaciente") : "" %>">
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div class="form-group">
 											<label for="apat">Apellido Paterno:</label>
-											<input type="text" class="form-control" id="apat" value="Toledo">
+											<input type="text" class="form-control" id="apat" value="<%= (pac) ? paciente.getString("aPaternoPaciente") : "" %>">
 										</div>
 										<div class="form-group">
 											<label for="amat">Apellido Materno:</label>
-											<input type="text" class="form-control" id="amat" value="Cea">
+											<input type="text" class="form-control" id="amat" value="<%= (pac) ? paciente.getString("aMaternoPaciente") : "" %>">
 										</div>
 									</div>
 									<div class="col-sm-4">
-										<div class="form-group">
-											<label for="phone">Telefono:</label>
-											<input type="text" class="form-control" id="phone" value="954521578">
-										</div>
+										
 										<div class="form-group">
 											<label for="email">Emaill:</label>
-											<input type="text" class="form-control" id="emaill" value="jhon@jhon.cl">
+											<input type="text" class="form-control" id="emaill" value="<%= (pac) ? paciente.getString("email") : "" %>">
 										</div>
 									</div>
 									<div class="col-sm-4 col-sm-offset-4">

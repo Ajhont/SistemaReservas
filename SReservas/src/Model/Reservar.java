@@ -93,4 +93,34 @@ public class Reservar {
 		ResultSet rs = st.executeQuery(query);
 		return rs;		
 	}
+	
+	public static ResultSet consultarPaciente(String rut)
+			throws Exception {
+
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+
+		String query = "SELECT * FROM paciente as pac " +
+				"where pac.rutPaciente = '" + rut + "'";
+
+		Statement st = con.createStatement();
+
+		ResultSet rs = st.executeQuery(query);
+		return rs;		
+	}
+	
+	public static ResultSet detalleHora(String idHora)
+			throws Exception {
+
+		Conexion conexion = new Conexion();
+		Connection con = conexion.getConexion();
+
+		String query = "SELECT * FROM hora as hrs " +
+				"where hrs.idHoras = '" + idHora + "'";
+
+		Statement st = con.createStatement();
+
+		ResultSet rs = st.executeQuery(query);
+		return rs;		
+	}
 }
